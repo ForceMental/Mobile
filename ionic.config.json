@@ -1,0 +1,7 @@
+{
+  "name": "ForceMental",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
