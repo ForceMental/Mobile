@@ -1,0 +1,20 @@
+<ion-content [fullscreen]="true">
+    <ion-title class="titulo">Crear cuenta Ejecutivo</ion-title>
+    <form>
+      <ion-list class="lista">
+        <ion-list>
+          <ion-item>
+            <ion-input label="Ingresa tu nombre" label-placement="floating" fill="solid"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input label="Ingresa tu email" label-placement="floating" fill="solid"type="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input label="Contraseña" label-placement="floating" fill="solid" type="password"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-list>
+    </form>
+    <ion-button class="boton" expand="block" [routerLink]="['/login']">Continuar</ion-button>
+  </ion-content>
+  

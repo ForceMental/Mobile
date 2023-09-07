@@ -1,0 +1,25 @@
+<ion-content [fullscreen]="true">
+    <div class="titulo">
+        <ion-title>Bienvenido a Force Mental</ion-title>
+    </div>
+    <div>
+        <form class="formulario">
+            <ion-item class="margen">
+                <ion-input class="input"></ion-input>
+                <ion-icon name="person-outline"></ion-icon>
+            </ion-item>
+            <ion-item class="margen">
+                <ion-input></ion-input>
+                <ion-icon name="lock-closed-outline"></ion-icon>
+            </ion-item>
+            <div class="contraseña">
+                <a [routerLink]="['/reset-password']">Has olvidado tu contraseña</a>
+            </div>
+            <div class="registro">
+                <a [routerLink]="['/signup']">Registrarse</a>
+            </div>
+
+        </form>
+    </div>
+    <ion-button expand="full" [routerLink]="['/home']">INGRESAR</ion-button>
+</ion-content>
