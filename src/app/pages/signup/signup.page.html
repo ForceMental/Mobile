@@ -1,20 +1,22 @@
 <ion-content [fullscreen]="true">
-    <ion-title class="titulo">Crear cuenta Ejecutivo</ion-title>
-    <form>
-      <ion-list class="lista">
-        <ion-list>
-          <ion-item>
-            <ion-input label="Ingresa tu nombre" label-placement="floating" fill="solid"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input label="Ingresa tu email" label-placement="floating" fill="solid"type="email"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input label="Contraseña" label-placement="floating" fill="solid" type="password"></ion-input>
-          </ion-item>
-        </ion-list>
-      </ion-list>
-    </form>
-    <ion-button class="boton" expand="block" [routerLink]="['/login']">Continuar</ion-button>
-  </ion-content>
+  <ion-title class="titulo">Crear cuenta Ejecutivo</ion-title>
+
+  <ion-input type="text" fill="solid" label="nombre de usuario" labelPlacement="floating"
+  helperText="Ingresa un minimo de 6 caracteres(alfanumerico)" errorText="Nombre de usuario inválido" ngModel
+  pattern="[A-Za-z0-9]{6,}"></ion-input>
+
+  <ion-input type="email" fill="solid" label="Ingresa tu correo electrónico" labelPlacement="floating"
+  helperText="Ingresa un correo válido" errorText="Correo inválido" ngModel
+  pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"></ion-input>
+
+
+    <ion-input type="password" fill="solid" label="Contraseña" labelPlacement="floating"
+    helperText="Ingresa una contraseña sin carateres especiales" errorText="Contraseña inválida" ngModel
+    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"></ion-input>
   
+
+  <ion-button class="boton" expand="block" [routerLink]="['/login']">Continuar</ion-button>
+</ion-content>
+
+
+

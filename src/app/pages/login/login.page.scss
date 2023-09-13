@@ -1,29 +1,92 @@
-.titulo{
-    text-align: center;
-    margin-top: 20px;
+ion-header {
+  margin-top: 10px;
+}
+
+ion-content {
+  --background: linear-gradient(to bottom, #34B0D2, #0bb64a);
+  background-size: cover;
+}
+
+.titulo {
+  text-align: center;
+  margin-top: 36px;
+  font-size: 2.0rem;
+  color: #021329;
+  font-weight: bold;
+  font-family: 'Lora', serif;
+  
+}
+
+.formulario {
+  text-align: center;
+  padding: 25px;
+  margin-top: 10%;
+}
+
+.margen {
+  margin: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  color: #00548d;
+}
+
+.input {
+  font-size: 16px;
+}
+
+.restablecer_contraseña {
+  
+  text-align: center;
+  padding-top: 20px;
+  a{
+     font-weight: 600;
+     font-size: 1rem;
+     text-decoration: none;
+}
+  }
+
+
+.registro {
+  text-align: center;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.boton {
+  
+  margin-top: 25%;
+  font-size: 15px; 
+  padding: 15px 40px; 
+  color: #fff; 
+  --background: #00548d;
+}
+
+.imagen {
+  display: block;
+  margin: 0 auto; 
+  max-width: 25%;
+  height: auto; 
+}
+
+
+@media screen and (max-width: 768px) {
+  .titulo {
+    font-size: 1.5rem; 
+  }
+  .formulario {
+    padding: 10px; 
+  }
+  .margen {
+    margin: 20px; 
+  }
+  .input {
+    font-size: 14px; 
+  }
+  .boton {
+    margin-top: 25%;
+    font-size: 15px;
+    padding: 12px 24px;
     
-}
-.formulario{
-    text-align: center;
-    padding: 25px
-    
-
-}
-.margen{
-    margin: 20px
-}
-.contraseña{
-    text-align: center;
-    margin-bottom: 20px;
-}
-.registro{
-    text-align: center;
-}
-
-
-
-
-ion-button {
-    --background: #1fb60b;
-      margin-top: 15%;
+  }
 }

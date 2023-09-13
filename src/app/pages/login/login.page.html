@@ -1,25 +1,34 @@
-<ion-content [fullscreen]="true">
-    <div class="titulo">
-        <ion-title>Bienvenido a Force Mental</ion-title>
-    </div>
+<ion-header>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap" rel="stylesheet">
+  </ion-header>
+
+<ion-content  [fullscreen]="true">
+    
+        <h1 class="titulo">Bienvenido a Force Mental</h1>
+    
+
     <div>
         <form class="formulario">
             <ion-item class="margen">
-                <ion-input class="input"></ion-input>
+                <ion-input class="input" placeholder="Nombre de usuario"></ion-input>
                 <ion-icon name="person-outline"></ion-icon>
             </ion-item>
             <ion-item class="margen">
-                <ion-input></ion-input>
+                <ion-input class="input" placeholder="Contraseña"></ion-input>
                 <ion-icon name="lock-closed-outline"></ion-icon>
             </ion-item>
-            <div class="contraseña">
-                <a [routerLink]="['/reset-password']">Has olvidado tu contraseña</a>
+            <div class="restablecer_contraseña">
+                <a [routerLink]="['/reset-password']" style="color: #f1f1f1f1;">Restablecer contraseña</a>
             </div>
+             
             <div class="registro">
-                <a [routerLink]="['/signup']">Registrarse</a>
+                <a  [routerLink]="['/signup']">Registrarse</a>
             </div>
 
-        </form>
+        </form> 
     </div>
-    <ion-button expand="full" [routerLink]="['/home']">INGRESAR</ion-button>
+    <ion-button class="boton" expand="block" [routerLink]="['/home']">INGRESAR</ion-button>
+    <ion-img class= "imagen" src="assets/icon/imagen-force-mental.png"></ion-img>
 </ion-content>
