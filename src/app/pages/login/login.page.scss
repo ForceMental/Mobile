@@ -55,7 +55,7 @@ ion-content {
   height: auto;
   max-width: 18rem;
   position: fixed; /* Fija la posición del botón */
-    bottom: 1rem; /* Lo coloca 1rem desde el borde inferior */
+    bottom: 1rem; 
     left: 50%; /* Lo coloca en la mitad del ancho de la pantalla */
     transform: translateX(-50%); /* Alinea el botón al centro horizontal */
 }
@@ -89,10 +89,10 @@ ion-content {
     margin-top: 1.5rem;
     max-width: 8rem;
     margin-top: 3rem;
-    position: fixed; /* Fija la posición del botón */
-    bottom: 1rem; /* Lo coloca 1rem desde el borde inferior */
-    left: 50%; /* Lo coloca en la mitad del ancho de la pantalla */
-    transform: translateX(-50%); /* Alinea el botón al centro horizontal */
+    position: fixed; 
+    bottom: 1rem; 
+    left: 50%; 
+    transform: translateX(-50%); 
   }
 }
 
