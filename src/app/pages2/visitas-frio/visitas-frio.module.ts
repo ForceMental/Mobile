@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { VisitaAgendadaPageRoutingModule } from './visita-agendada-routing.module';
+import { VisitasFrioPageRoutingModule } from './visitas-frio-routing.module';
 
-import { VisitaAgendadaPage } from './visita-agendada.page';
+import { VisitasFrioPage } from './visitas-frio.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    VisitaAgendadaPageRoutingModule
+    VisitasFrioPageRoutingModule
   ],
-  declarations: [VisitaAgendadaPage]
+  declarations: [VisitasFrioPage]
 })
-export class VisitaAgendadaPageModule {}
+export class VisitasFrioPageModule {}

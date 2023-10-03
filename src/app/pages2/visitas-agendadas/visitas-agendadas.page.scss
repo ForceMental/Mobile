@@ -1,0 +1,25 @@
+.barra-herramientas {
+  text-align: center; 
+  color: #ffffff;
+  font-weight: bold;
+  font-family: 'Lora', serif;
+  --background: #0c2a5d;
+  
+}
+.body{
+  --background: linear-gradient(to bottom,#0c2a5d, #00f9ff);
+}
+.formulario{
+
+margin-top: 3rem;
+padding: 0 20px;
+
+
+
+}
+
+.boton{
+  --background: linear-gradient(to bottom,#0c2a5d, #00f9ff);
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+}

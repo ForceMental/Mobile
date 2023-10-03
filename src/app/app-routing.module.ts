@@ -27,6 +27,26 @@ const routes: Routes = [ //rutas para las pages
     path: 'reset-password',
     loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
+  
+  {
+    path: 'crear-visitas',
+    loadChildren: () => import('./pages2/crear-visitas/crear-visitas.module').then( m => m.CrearVisitasPageModule)
+  },
+  {
+    path: 'visitas-agendadas',
+    loadChildren: () => import('./pages2/visitas-agendadas/visitas-agendadas.module').then( m => m.VisitasAgendadasPageModule)
+  },
+  
+  {
+    path: 'reprogramar-visitas',
+    loadChildren: () => import('./pages2/reprogramar-visitas/reprogramar-visitas.module').then( m => m.ReprogramarVisitasPageModule)
+  },
+  {
+    path: 'visitas-frio',
+    loadChildren: () => import('./pages2/visitas-frio/visitas-frio.module').then( m => m.VisitasFrioPageModule)
+  },
+
+   
 ];
 
 @NgModule({

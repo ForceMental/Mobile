@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -34,12 +35,20 @@ export class AppComponent implements OnInit {
       url: '/signup',
       icon: 'log-in-outline'
     },
+
   ];
 
   mobileQuery: MediaQueryList;
+  isHomePage: boolean;
 
-  constructor(private media: MediaMatcher) {
+  constructor(private media: MediaMatcher, private router: Router) {
     this.mobileQuery = media.matchMedia('(prefers-color-scheme: dark)');
+    this.isHomePage = this.router.url === '/home'; // Verifica si la página actual es la página principal
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isHomePage = event.url === '/home'; // Actualiza isHomePage cuando cambias de página
+      }
+    });
   }
 
   ngOnInit() {
@@ -50,10 +59,16 @@ export class AppComponent implements OnInit {
     });
   }
 
-  toggleDarkTheme(shouldAdd: boolean) {
-    document.body.classList.toggle('dark', shouldAdd);
+  private toggleDarkTheme(shouldAdd: boolean) {
+    const body = document.body;
+    if (shouldAdd) {
+      body.classList.add('dark-theme');
+    } else {
+      body.classList.remove('dark-theme');
+    }
   }
 }
+
 
 
 

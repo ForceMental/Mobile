@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CrearVisitaPageRoutingModule } from './crear-visita-routing.module';
+import { CrearVisitasPageRoutingModule } from './crear-visitas-routing.module';
 
-import { CrearVisitaPage } from './crear-visita.page';
+import { CrearVisitasPage } from './crear-visitas.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CrearVisitaPageRoutingModule
+    CrearVisitasPageRoutingModule
   ],
-  declarations: [CrearVisitaPage]
+  declarations: [CrearVisitasPage]
 })
-export class CrearVisitaPageModule {}
+export class CrearVisitasPageModule {}

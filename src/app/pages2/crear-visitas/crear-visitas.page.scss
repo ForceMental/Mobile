@@ -1,0 +1,55 @@
+/* Estilos generales */
+.barra-herramientas {
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: 'Lora', serif;
+  --background: #0c2a5d;
+}
+
+/* Estilos para el título */
+.titulo {
+  text-align: center;
+  margin-top: 1rem; /* Espaciado superior del título */
+  font-size: 1.5rem;
+  color: #00548d;
+}
+
+/* Estilos para el formulario */
+.formulario {
+  max-width: 500px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centrar en la pantalla */
+}
+
+ion-list ion-item {
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+/* Estilos para el botón */
+.boton-send {
+  margin-top: 1rem; /* Espaciado superior del botón */
+  border-radius: 20px; /* Bordes redondeados para el botón */
+  --background: #00548d; /* Color de fondo del botón */
+  padding: 15px 25px;
+  
+}
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .titulo {
+    font-size: 1.2rem; /* Tamaño del título en dispositivos móviles */
+  }
+
+  .formulario {
+    max-width: 80%; /* Ancho máximo del formulario en dispositivos móviles */
+  }
+
+  .boton-send {
+    margin-top: 1rem; /* Espaciado superior del botón en dispositivos móviles */
+    font-size: 12px;
+    padding: 15px 55px;
+  }
+  
+}
+
