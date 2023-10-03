@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router, NavigationEnd } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  
+export class AppComponent {
+
   public appPages = [
     {
       title: 'Home',
@@ -35,7 +36,11 @@ export class AppComponent implements OnInit {
       url: '/signup',
       icon: 'log-in-outline'
     },
-
+    {
+      title: 'Visitas Agendadas',
+      url: '/visitas-agendadas',
+      icon: 'calendar-outline'
+    }
   ];
 
   mobileQuery: MediaQueryList;
@@ -43,19 +48,12 @@ export class AppComponent implements OnInit {
 
   constructor(private media: MediaMatcher, private router: Router) {
     this.mobileQuery = media.matchMedia('(prefers-color-scheme: dark)');
-    this.isHomePage = this.router.url === '/home'; // Verifica si la página actual es la página principal
+    this.isHomePage = this.router.url === '/home';
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.isHomePage = event.url === '/home'; // Actualiza isHomePage cuando cambias de página
+        this.isHomePage = event.url === '/home';
       }
-    });
-  }
-
-  ngOnInit() {
-    this.toggleDarkTheme(this.mobileQuery.matches);
-
-    this.mobileQuery.addEventListener('change', (mediaQuery) => {
-      this.toggleDarkTheme(mediaQuery.matches);
     });
   }
 
@@ -68,9 +66,3 @@ export class AppComponent implements OnInit {
     }
   }
 }
-
-
-
-
-
-

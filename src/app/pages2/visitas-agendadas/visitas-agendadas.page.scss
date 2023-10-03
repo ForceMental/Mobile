@@ -9,17 +9,67 @@
 .body{
   --background: linear-gradient(to bottom,#0c2a5d, #00f9ff);
 }
-.formulario{
 
-margin-top: 3rem;
-padding: 0 20px;
-
-
-
+.lista {
+  margin: 20px; 
+  margin-top: 3rem;
+  
+  border-radius: 10px; 
+  padding: 10px; 
+  
+}
+.nombre_cliente{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+  text-align: center; 
+  font-size: 1rem; 
+  margin: 0; 
 }
 
-.boton{
+ion-icon {
+  font-size: 24px;
+  margin-right: 5px; 
+}
+
+.boton_crear {
+  margin-top: 3rem;
+  font-size: 0.7rem;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  color: #fff;
+  --background: #127c07;
+}
+.boton_ver{
+  font-family: 'Courier New', Courier, monospace;
+  --background: #127c07;
+  
+} 
+
+.boton_volver{
   --background: linear-gradient(to bottom,#0c2a5d, #00f9ff);
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   
+}
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .lista {
+    margin: 10px; 
+  }
+
+  .nombre_cliente {
+    font-size: 0.8rem; 
+  }
+
+  ion-icon {
+    font-size: 20px; 
+  }
+
+  .boton_crear {
+    font-size: 0.6rem; 
+    padding: 1rem 1.5rem; 
+  }
+  
+  .boton_ver {
+    font-size: 0.6rem; 
+  }
 }

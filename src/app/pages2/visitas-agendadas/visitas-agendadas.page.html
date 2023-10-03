@@ -1,51 +1,26 @@
 <ion-header>
   <ion-toolbar class="barra-herramientas">
     <ion-title>Visita Agendada</ion-title>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="body">
-  
-  <div class="formulario">
-    <ion-list>
-      <ion-item>
-        <ion-icon name="person" slot="start"></ion-icon>
-        <ion-input placeholder="Nombres"></ion-input>
-      </ion-item>
 
-      <ion-item>
-        <ion-icon name="person" slot="start"></ion-icon>
-        <ion-input placeholder="Apellidos"></ion-input>
-      </ion-item>
+  <ion-list class="lista">
+    <ion-item *ngFor="let visita of visitasAgendadas" (click)="mostrarDetalles(visita)">
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label>
+        <h3 class="nombre_cliente">{{ visita.cliente }}</h3>
+      </ion-label>
+      <ion-button class="boton_ver" size="small">ver</ion-button>
+    </ion-item>
+  </ion-list>
   
-      <ion-item>
-        <ion-icon name="card-outline" slot="start"></ion-icon>
-        <ion-input type="text" placeholder="RUT"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-icon name="mail" slot="start"></ion-icon>
-        <ion-input type="email" placeholder="Email"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-icon name="call" slot="start"></ion-icon>
-        <ion-input type="tel" placeholder="Teléfono"></ion-input>
-      </ion-item>
+  <ion-button class="boton_crear" expand="block" [routerLink]="['/crear-visitas']">Crear Visita</ion-button>
 
-      <ion-item>
-        <ion-icon name="location-outline" slot="start"></ion-icon>
-        <ion-input placeholder="Dirección"></ion-input>
-      </ion-item>
-    </ion-list>
-  </div>
-
-  
-
-  <ion-fab class="boton" vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button [routerLink]="['/home']" class="boton">
-     <ion-icon name="arrow-back-outline"></ion-icon>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button class="boton_volver" [routerLink]="['/home']">
+      <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

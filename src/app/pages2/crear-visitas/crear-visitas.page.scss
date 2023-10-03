@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 .barra-herramientas {
   text-align: center;
   color: #ffffff;
@@ -7,18 +7,18 @@
   --background: #0c2a5d;
 }
 
-/* Estilos para el título */
+
 .titulo {
   text-align: center;
-  margin-top: 1rem; /* Espaciado superior del título */
+  margin-top: 1rem; 
   font-size: 1.5rem;
   color: #00548d;
 }
 
-/* Estilos para el formulario */
+
 .formulario {
-  max-width: 500px; /* Ancho máximo del formulario */
-  margin: 0 auto; /* Centrar en la pantalla */
+  max-width: 500px; 
+  margin: 0 auto; 
 }
 
 ion-list ion-item {
@@ -26,30 +26,50 @@ ion-list ion-item {
   --padding-end: 0;
 }
 
-/* Estilos para el botón */
+
+
 .boton-send {
-  margin-top: 1rem; /* Espaciado superior del botón */
-  border-radius: 20px; /* Bordes redondeados para el botón */
-  --background: #00548d; /* Color de fondo del botón */
+  margin-top: 1rem;
+  border-radius: 20px;
   padding: 15px 25px;
+  --background: #127c07; 
+
+  /* Cambia el color de fondo si es visita en frío */
+  --background-visita-en-frio: #00548d; 
+}
+
+/* Aplica el color de fondo según la condición de visita en frío */
+.boton-send[esVisitaEnFrio='true'] {
+  --background: var(--background-visita-en-frio);
+}
+
+
+.boton_volver{
+  --background: linear-gradient(to bottom,#0c2a5d, #00f9ff);
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   
 }
 
-/* Estilos para dispositivos móviles */
+
 @media screen and (max-width: 768px) {
+  .barra-herramientas {
+    font-size: 0.8rem; 
+  }
+
   .titulo {
-    font-size: 1.2rem; /* Tamaño del título en dispositivos móviles */
+    font-size: 1.2rem; 
   }
 
   .formulario {
-    max-width: 80%; /* Ancho máximo del formulario en dispositivos móviles */
+    max-width: 90%; 
+    margin: 0 auto; 
   }
 
   .boton-send {
-    margin-top: 1rem; /* Espaciado superior del botón en dispositivos móviles */
-    font-size: 12px;
-    padding: 15px 55px;
-  }
+    margin-top: 0.5rem; 
+    font-size: 0.7rem; 
+    padding: 10px 20px; 
   
 }
 
+}

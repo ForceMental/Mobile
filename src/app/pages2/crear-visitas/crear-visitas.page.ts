@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./crear-visitas.page.scss'],
 })
 export class CrearVisitasPage implements OnInit {
+  esVisitaEnFrio: boolean = false; // Variable para controlar si es una visita en frío
 
   constructor() { }
 
@@ -13,3 +14,4 @@ export class CrearVisitasPage implements OnInit {
   }
 
 }
+

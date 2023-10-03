@@ -1,4 +1,4 @@
-/* Estilos para la barra de herramientas */
+
 .barra-herramientas {
   text-align: center; 
   color: #ffffff;
@@ -9,46 +9,46 @@
   
 }
 
-/* Estilos para el cuerpo de la página */
+
 .body {
   
-  padding: 20px; /* Añade algún espacio alrededor del contenido */
+  padding: 20px; 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Estilos para la imagen */
+
 .ion-img {
   width: 80px;
   height: 80px;
-  margin-bottom: 20px; /* Ajusta el margen inferior de la imagen */
+  margin-bottom: 20px; 
 }
 
-/* Estilos para los elementos de la lista */
+
 .ion-list-item {
-  margin-top: 20px; /* Ajusta el margen superior de los elementos de la lista */
-  text-align: center; /* Centra el texto dentro de los elementos de la lista */
+  margin-top: 20px; 
+  text-align: center; 
 }
 
-/* Estilos para el botón */
+
 .boton {
   --background: linear-gradient(to bottom,#0c2a5d, #00f9ff);
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 16px;
 }
 
-/* Estilos adicionales para pantallas pequeñas */
+
 @media screen and (max-width: 768px) {
 
   .barra-herramientas {
-    padding: 10px; /* Ajusta el padding de la barra para pantallas pequeñas */
+    padding: 10px;
   }
   .ion-list-item {
-    margin-top: 10px; /* Ajusta el margen superior de los elementos de la lista para pantallas pequeñas */
+    margin-top: 10px; 
   }
 
   .boton {
-    font-size: 14px; /* Ajusta el tamaño de fuente del botón para pantallas pequeñas */
+    font-size: 14px; 
   }
 }
