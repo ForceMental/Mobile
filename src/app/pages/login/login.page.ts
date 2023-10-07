@@ -19,12 +19,12 @@ export class LoginPage implements OnInit {
   login() {
     this.authService.loginWithAzure()
       .then(result => {
-        // Manejar el resultado, como guardar el token, redirigir al usuario, etc.
+        
         console.log(result);
         this.router.navigate(['/home']);
       })
       .catch(error => {
-        // Manejar el error
+        
       });
   }
   // async onLoginClick() {
