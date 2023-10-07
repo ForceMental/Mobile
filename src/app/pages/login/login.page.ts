@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -8,23 +8,35 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(public authService: AuthService)
+  constructor(public authService: AuthService, private router: Router)
     {
 
     }
 
   ngOnInit() {
   }
-  async onLoginClick() {
-    try {
-      const token = await this.authService.login();
-      console.log("Token obtenido: ", token);
 
-    } catch (error) {
-      console.error("Error durante el inicio de sesión: ", error);
-
-    }
+  login() {
+    this.authService.loginWithAzure()
+      .then(result => {
+        // Manejar el resultado, como guardar el token, redirigir al usuario, etc.
+        console.log(result);
+        this.router.navigate(['/home']);
+      })
+      .catch(error => {
+        // Manejar el error
+      });
   }
+  // async onLoginClick() {
+  //   try {
+  //     const token = await this.authService.login();
+  //     console.log("Token obtenido: ", token);
+
+  //   } catch (error) {
+  //     console.error("Error durante el inicio de sesión: ", error);
+
+  //   }
+  // }
 
 
 }
