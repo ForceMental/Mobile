@@ -40,7 +40,7 @@ ion-content {
 }
 
 .boton {
-  margin-top: 2.5rem;
+  margin-top: 1rem; /* Ajusta el margen superior aquí */
   font-size: 1rem;
   padding: 1.5rem 2rem;
   color: #fff;
@@ -50,15 +50,21 @@ ion-content {
 
 
 
-.imagen {
-  max-width: 90%; /* Ajuste para que la imagen no ocupe toda la pantalla */
-  height: auto;
-  max-width: 18rem;
-  position: fixed; /* Fija la posición del botón */
-    bottom: 1rem; 
-    left: 50%; /* Lo coloca en la mitad del ancho de la pantalla */
-    transform: translateX(-50%); /* Alinea el botón al centro horizontal */
+.imagen-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh; /* Esto centra la imagen en la pantalla */
+  margin-top: 1rem; /* Agregamos margen superior */
 }
+
+.imagen {
+  max-width: 90%;
+  height: auto;
+  max-width: 15rem;
+}
+
+
 
 @media screen and (max-width: 768px) {
   .titulo {
@@ -80,19 +86,10 @@ ion-content {
     font-size: 1rem;
   }
   .boton {
-    margin-top: 3rem;
+   
     font-size: 0.7rem;
-    padding: 1.5rem 2rem;
-    border-radius: 1rem;
+    
   }
-  .imagen {
-    margin-top: 1.5rem;
-    max-width: 8rem;
-    margin-top: 3rem;
-    position: fixed; 
-    bottom: 1rem; 
-    left: 50%; 
-    transform: translateX(-50%); 
-  }
+  
 }
 

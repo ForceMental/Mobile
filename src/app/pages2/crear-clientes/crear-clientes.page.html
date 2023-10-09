@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar class="barra-herramientas">
+    <ion-title>Crear Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="body">
+  
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="filterItems($event)" show-clear-button="focus" value="Show on Focus"></ion-searchbar>
+  
+  
+  <div class="formulario fondo-formulario" *ngIf="selectedCliente">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item class="item-custom">
+            <ion-label class="label-custom">N° de Cliente:</ion-label>
+            <ion-text class="text-custom">{{ selectedCliente.numeroCliente }}</ion-text>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item class="item-custom">
+            <ion-label class="label-custom">Nombres:</ion-label>
+            <ion-text class="text-custom">{{ selectedCliente.nombres }}</ion-text>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item class="item-custom">
+            <ion-label class="label-custom">Apellidos:</ion-label>
+            <ion-text class="text-custom">{{ selectedCliente.apellidos }}</ion-text>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item class="item-custom">
+            <ion-label class="label-custom">Rut:</ion-label>
+            <ion-text class="text-custom">{{ selectedCliente.rut }}</ion-text>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item class="item-custom">
+            <ion-label class="label-custom">Correo:</ion-label>
+            <ion-text class="text-custom">{{ selectedCliente.correo }}</ion-text>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item class="item-custom">
+            <ion-label class="label-custom">Teléfono:</ion-label>
+            <ion-text class="text-custom">{{ selectedCliente.telefono }}</ion-text>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item class="item-custom">
+            <ion-label class="label-custom">Dirección:</ion-label>
+            <ion-text class="text-custom">{{ selectedCliente.direccion }}</ion-text>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div> 
+  <div class="botones-container">
+    <ion-button class="boton-search" expand="block">Buscar Cliente</ion-button>
+    <ion-button class="boton-crear" [routerLink]="['/formulario-cliente']" expand="block">Crear Cliente</ion-button>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" class="fixed-bottom">
+    <ion-fab-button class="boton_volver" [routerLink]="['/home']">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+
+
+

@@ -1,0 +1,137 @@
+.barra-herramientas {
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  --background: #0c2a5d;
+}
+.body{
+  --background: linear-gradient(to bottom, #0c2a5d, #00f9ff);
+}
+.item-custom {
+  border: 2px solid #3498db;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.label-custom {
+  font-weight: bold;
+
+}
+
+.botones-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.formulario {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.boton-search {
+  border-radius: 20px;
+  padding: 15px 25px;
+  --background: #127c07;
+}
+
+.boton-crear {
+  padding-top: 2rem;
+  border-radius: 20px;
+  padding: 15px 25px;
+  --background: #1758ab;
+}
+
+.imagen-container {
+  height: 30vh;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.imagen {
+  max-width: 90%;
+  height: auto;
+  max-width: 15rem;
+}
+
+.fixed-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: transparent;
+}
+
+.boton_volver {
+  --background: linear-gradient(to bottom, #0c2a5d, #00f9ff);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .barra-herramientas {
+    font-size: 0.8rem;
+  }
+
+  .formulario {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .botones-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem;
+  }
+
+  .boton-search {
+    font-size: 0.7rem;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+
+  .boton-crear {
+    font-size: 0.7rem;
+    border-radius: 20px;
+    padding: 10px 20px;
+  }
+
+  .imagen-container {
+    height: 10vh;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .imagen {
+    max-width: 90%;
+    height: auto;
+    max-width: 8rem;
+  }
+
+  .fixed-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: transparent;
+  }
+
+  .boton_volver {
+    margin-top: 0;
+    margin-left: 10px;
+  }
+}

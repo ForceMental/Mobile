@@ -6,9 +6,16 @@
   --background: #0c2a5d;
   
 }
-.body{
-  --background: linear-gradient(to bottom,#0c2a5d, #00f9ff);
+.titulo {
+  font-size: 2.0rem;
+  color: black;
+  font-weight: bold;
+  font-family: 'Lora', serif;
+  text-align: center;
+  margin-top: 2rem;
 }
+
+
 
 .lista {
   margin: 20px; 
@@ -30,19 +37,15 @@ ion-icon {
   margin-right: 5px; 
 }
 
-.boton_crear {
-  margin-top: 3rem;
-  font-size: 0.7rem;
-  padding: 1.5rem 2rem;
-  border-radius: 1rem;
-  color: #fff;
-  --background: #127c07;
+
+.boton_crear, .boton_reprogramar {
+  margin-top: 1rem; /* Espaciado superior de los botones */
+  border-radius: 20px; /* Bordes redondeados para los botones */
+  padding: 15px 25px; /* Ajuste del padding de los botones */
+  margin-left: 1rem; /* Espaciado a la izquierda del botón "Reprogramar Visitas" */
+
 }
-.boton_ver{
-  font-family: 'Courier New', Courier, monospace;
-  --background: #127c07;
-  
-} 
+
 
 .boton_volver{
   --background: linear-gradient(to bottom,#0c2a5d, #00f9ff);
@@ -50,11 +53,13 @@ ion-icon {
   
 }
 
-/* Estilos para dispositivos móviles */
+
 @media screen and (max-width: 768px) {
   .lista {
     margin: 10px; 
+    margin-top: 5rem;
   }
+
 
   .nombre_cliente {
     font-size: 0.8rem; 
@@ -64,12 +69,4 @@ ion-icon {
     font-size: 20px; 
   }
 
-  .boton_crear {
-    font-size: 0.6rem; 
-    padding: 1rem 1.5rem; 
-  }
-  
-  .boton_ver {
-    font-size: 0.6rem; 
-  }
 }

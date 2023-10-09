@@ -45,6 +45,18 @@ const routes: Routes = [ //rutas para las pages
     path: 'visitas-frio',
     loadChildren: () => import('./pages2/visitas-frio/visitas-frio.module').then( m => m.VisitasFrioPageModule)
   },
+  {
+    path: 'solicitar-productos',
+    loadChildren: () => import('./pages2/solicitar-productos/solicitar-productos.module').then( m => m.SolicitarProductosPageModule)
+  },
+  {
+    path: 'crear-clientes',
+    loadChildren: () => import('./pages2/crear-clientes/crear-clientes.module').then( m => m.CrearClientesPageModule)
+  },
+  {
+    path: 'formulario-cliente',
+    loadChildren: () => import('./pages2/formulario-cliente/formulario-cliente.module').then( m => m.FormularioClientePageModule)
+  },
 
    
 ];
