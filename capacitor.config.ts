@@ -1,12 +1,13 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'com.ionic.ForceMental',
   appName: 'ForceMental',
   webDir: 'www',
   server: {
     androidScheme: 'https'
   }
 };
+
 
 export default config;
