@@ -1,72 +1,68 @@
 .barra-herramientas {
-  text-align: center; 
+  text-align: center;
   color: #ffffff;
   font-weight: bold;
   font-family: 'Lora', serif;
   --background: #0c2a5d;
-  
 }
+
 .titulo {
-  font-size: 2.0rem;
+  font-size: 2rem;
   color: black;
   font-weight: bold;
   font-family: 'Lora', serif;
   text-align: center;
-  margin-top: 2rem;
-}
-
-
-
-.lista {
-  margin: 20px; 
   margin-top: 3rem;
+}
+
+ion-datetime {
+  max-width: 300px; /* Ancho máximo para evitar que se estire demasiado en pantallas grandes */
+  margin: 0 auto; /* Centrar en el contenedor */
+  margin-bottom: 3rem;
+  margin-top: 5rem;
+}
+
+.boton_visualizar-cliente, .boton_registrar-cliente {
   
-  border-radius: 10px; 
-  padding: 10px; 
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 48%; /* Establecer el ancho al 48% para que ambos botones tengan el mismo tamaño */
+  margin: 0 1%; /* Añadir un pequeño margen entre los botones */
+}
+
+.boton_visualizar-cliente {
+  --background: #127c07;
   
 }
-.nombre_cliente{
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-  text-align: center; 
-  font-size: 1rem; 
-  margin: 0; 
+
+.boton_registrar-cliente {
+  --background: #0f077c;
+  
 }
 
-ion-icon {
-  font-size: 24px;
-  margin-right: 5px; 
-}
-
-
-.boton_crear, .boton_reprogramar {
-  margin-top: 1rem; /* Espaciado superior de los botones */
-  border-radius: 20px; /* Bordes redondeados para los botones */
-  padding: 15px 25px; /* Ajuste del padding de los botones */
-  margin-left: 1rem; /* Espaciado a la izquierda del botón "Reprogramar Visitas" */
-
-}
-
-
-.boton_volver{
+.boton_volver {
   --background: linear-gradient(to bottom,#0c2a5d, #00f9ff);
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
 @media screen and (max-width: 768px) {
-  .lista {
-    margin: 10px; 
-    margin-top: 5rem;
+  .barra-herramientas {
+    font-size: 0.8rem;
   }
 
 
-  .nombre_cliente {
-    font-size: 0.8rem; 
+  .botones-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem;
+    
   }
 
-  ion-icon {
-    font-size: 20px; 
+  
+  .boton_volver {
+    margin-top: 0;
+    margin-left: 10px;
   }
-
 }
+

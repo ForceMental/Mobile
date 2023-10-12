@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.ionic.ForceMental',
+  appId: 'io.ionic.starter',
   appName: 'ForceMental',
   webDir: 'www',
   server: {

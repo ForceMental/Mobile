@@ -18,12 +18,7 @@
 
 }
 
-.botones-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 1rem;
-}
+
 
 .formulario {
   max-width: 90%;
@@ -36,7 +31,7 @@
   --background: #127c07;
 }
 
-.boton-crear {
+.boton-crear-cliente {
   padding-top: 2rem;
   border-radius: 20px;
   padding: 15px 25px;
@@ -98,7 +93,7 @@
     padding: 10px 20px;
   }
 
-  .boton-crear {
+  .boton-crear-cliente {
     font-size: 0.7rem;
     border-radius: 20px;
     padding: 10px 20px;

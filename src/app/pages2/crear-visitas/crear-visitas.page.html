@@ -1,2 +1,72 @@
+<ion-header>
+  <ion-toolbar class="barra-herramientas">
+    <ion-title>Crear Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content [fullscreen]="true" class="body">
 
+  <div class="formulario fondo-formulario">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Nombres:</ion-label>
+            <ion-input placeholder="Ej: Juan Carlos"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Apellidos:</ion-label>
+            <ion-input placeholder="Ej: Araya Gutty"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Rut:</ion-label>
+            <ion-input placeholder="Ej: 12345678-9"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Correo:</ion-label>
+            <ion-input placeholder="Ej: ejemplo@correo.com"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Teléfono:</ion-label>
+            <ion-input placeholder="Ej: +56912345678"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Dirección:</ion-label>
+            <ion-input placeholder="Ej: Calle Ejemplo #123"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>¿Visita en frío?</ion-label>
+            <ion-checkbox [(ngModel)]="esVisitaEnFrio" (ionChange)="cambiarColorBoton()"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-button [class.boton-send]="!esVisitaEnFrio" [class.boton-send-frio]="esVisitaEnFrio"
+    expand="full">Enviar</ion-button>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" class="fixed-bottom">
+    <ion-fab-button class="boton_volver" [routerLink]="['/home']">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
