@@ -43,9 +43,9 @@ export class AuthService {
       scope: "api://10c0a520-d47e-45bb-a7ab-fb2bbf129cf3/product",
       pkceEnabled: true,
       pkceCodeChallenge: codeChallenge,
-      redirectUrl: 'http://localhost:4200/home',
+      redirectUrl: 'http://localhost:8100/home',
       web: {
-        redirectUrl: "http://localhost:4200/home",
+        redirectUrl: "http://localhost:8100/home",
         windowOptions: "height=600,left=0,top=0",
         pkceEnabled: true,
         pkceCodeChallenge: codeChallenge,
