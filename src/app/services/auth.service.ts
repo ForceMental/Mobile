@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { OAuth2Client } from '@byteowls/capacitor-oauth2';
-
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() {
+  constructor(private storage: Storage) {
   }
 
   private generateCodeVerifier(): string {
@@ -43,16 +43,23 @@ export class AuthService {
       scope: "api://10c0a520-d47e-45bb-a7ab-fb2bbf129cf3/product",
       pkceEnabled: true,
       pkceCodeChallenge: codeChallenge,
-      redirectUrl: 'http://localhost:4200/home',
+      redirectUrl: 'http://localhost:8100/home',
       web: {
-        redirectUrl: "http://localhost:4200/home",
+        redirectUrl: "http://localhost:8100/home",
         windowOptions: "height=600,left=0,top=0",
         pkceEnabled: true,
         pkceCodeChallenge: codeChallenge,
       }
     };
 
-    return OAuth2Client.authenticate(oauth2Options);
+    const authResponse = await OAuth2Client.authenticate(oauth2Options);
+
+    const accessToken = authResponse.access_token;
+    const refreshToken = authResponse.refresh_token;
+
+    await this.storage.set('access_token', accessToken);
+
+    return authResponse
   }
 
 
