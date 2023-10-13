@@ -57,6 +57,10 @@ const routes: Routes = [ //rutas para las pages
     path: 'formulario-cliente',
     loadChildren: () => import('./pages2/formulario-cliente/formulario-cliente.module').then( m => m.FormularioClientePageModule)
   },
+  {
+    path: 'venta',
+    loadChildren: () => import('./pages2/venta/venta.module').then( m => m.VentaPageModule)
+  },
 
    
 ];
