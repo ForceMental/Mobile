@@ -49,18 +49,18 @@ export class CrearClientesPage {
   }
 
   async ionViewWillEnter() {
-    // Obtiene el token de acceso del almacenamiento de Ionic
+
     this.token = await this.storage.get('access_token');
 
     if (this.token) {
-      // Si se obtiene el token, realiza la solicitud a la API
+
       this.apiService.getWithToken(this.token).subscribe({
         next: (response) => {
-          // Almacena los datos de la API en la variable 'datos'
+
           this.datos = response;
         },
         error: (error) => {
-          // Maneja los errores de la solicitud
+
           console.error('Error al obtener datos de la API:', error);
         },
       });

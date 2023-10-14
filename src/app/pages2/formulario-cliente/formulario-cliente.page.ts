@@ -29,13 +29,13 @@ export class FormularioClientePage implements OnInit {
     console.log(this.formData);
     try {
       const response = await (await this.apiService.postData(this.formData)).subscribe();
-      // Maneja la respuesta exitosa aquí
+
       console.log('Respuesta exitosa:', response);
-      // Puedes realizar otras acciones con la respuesta, como actualizar la vista
+
     } catch (error) {
-      // Maneja los errores aquí
+
       console.error('Error en la solicitud POST:', error);
-      // Puedes mostrar un mensaje de error al usuario u otras acciones de manejo de errores
+
     }
   }
 
