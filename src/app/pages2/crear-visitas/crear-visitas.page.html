@@ -61,7 +61,7 @@
     </ion-grid>
   </div>
 
-  <ion-button [class.boton-send]="!esVisitaEnFrio" [class.boton-send-frio]="esVisitaEnFrio"
+  <ion-button [routerLink]="['/crear-clientes']" [class.boton-send]="!esVisitaEnFrio" [class.boton-send-frio]="esVisitaEnFrio"
     expand="full">Enviar</ion-button>
 
   <ion-fab vertical="bottom" horizontal="start" slot="fixed" class="fixed-bottom">

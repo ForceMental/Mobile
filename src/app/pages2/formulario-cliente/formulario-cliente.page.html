@@ -13,46 +13,46 @@
           <ion-label position="floating">Rut:</ion-label>
           <ion-input placeholder="Ej: 197930026-9" [(ngModel)]="formData.rut"></ion-input>
         </ion-item>
-
+        
         <ion-item>
           <ion-label position="floating">Nombres:</ion-label>
           <ion-input placeholder="Ej: Juan Carlos" [(ngModel)]="formData.nombre"></ion-input>
         </ion-item>
-
+        
         <ion-item>
           <ion-label position="floating">Apellidos:</ion-label>
           <ion-input placeholder="Ej: Araya Gutty" [(ngModel)]="formData.apellido"></ion-input>
         </ion-item>
-
+        
         <ion-item>
           <ion-label position="floating">Teléfono:</ion-label>
           <ion-input placeholder="+569" [(ngModel)]="formData.telefono"></ion-input>
         </ion-item>
-
+        
         <ion-item>
           <ion-label position="floating">Correo:</ion-label>
           <ion-input placeholder="Ej: maria@gmail.com" [(ngModel)]="formData.correo_electronico"></ion-input>
         </ion-item>
-
+        
         <ion-item>
           <ion-label position="floating">Dirección:</ion-label>
           <ion-input placeholder="Ej: Los boldos, Viña del Mar" [(ngModel)]="formData.direccion"></ion-input>
         </ion-item>
-
+        
         <ion-item>
-          <ion-label>Comuna:</ion-label>
-          <ion-select [(ngModel)]="formData.comuna" name="comuna">
-            <ion-select-option value="1">Opción 1</ion-select-option>
-            <ion-select-option value="2">Opción 2</ion-select-option>
-            <!-- Agrega tus opciones aquí -->
+          <ion-select [(ngModel)]="formData.comuna" name="comuna" interface="popover" label="Comuna:">
+            <ion-select-option value="1">Viña del Mar</ion-select-option>
+            <ion-select-option value="2">Santiago</ion-select-option>
           </ion-select>
         </ion-item>
+        
+        
       </ion-list>
 
-      <ion-button class="boton-send" expand="full" (click)="submitForm()">Enviar</ion-button>
+      <ion-button class="boton-send" expand="full" [routerLink]="['/crear-clientes']" (click)="submitForm()">Enviar</ion-button>
     </div>
     <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-      <ion-fab-button class="boton_volver" [routerLink]="['/crear-clientes']">
+      <ion-fab-button class="boton_volver">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab>
