@@ -15,15 +15,9 @@
   margin-top: 3rem;
 }
 
-ion-datetime {
-  max-width: 300px; /* Ancho máximo para evitar que se estire demasiado en pantallas grandes */
-  margin: 0 auto; /* Centrar en el contenedor */
-  margin-bottom: 3rem;
-  margin-top: 5rem;
-}
 
 .boton_visualizar-cliente, .boton_registrar-cliente {
-  
+
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   width: 48%; /* Establecer el ancho al 48% para que ambos botones tengan el mismo tamaño */
   margin: 0 1%; /* Añadir un pequeño margen entre los botones */
@@ -31,12 +25,12 @@ ion-datetime {
 
 .boton_visualizar-cliente {
   --background: #127c07;
-  
+
 }
 
 .boton_registrar-cliente {
   --background: #0f077c;
-  
+
 }
 
 .boton_volver {
@@ -44,6 +38,9 @@ ion-datetime {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.list-md{
+  margin: 0 16px; /* Margen de 16 píxeles a ambos lados */
+}
 
 @media screen and (max-width: 768px) {
   .barra-herramientas {
@@ -56,10 +53,10 @@ ion-datetime {
     flex-direction: row;
     justify-content: space-between;
     margin: 1rem;
-    
+
   }
 
-  
+
   .boton_volver {
     margin-top: 0;
     margin-left: 10px;

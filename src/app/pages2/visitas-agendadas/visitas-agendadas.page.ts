@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { format } from 'date-fns';
 
 interface VisitaAgendada {
@@ -17,7 +17,7 @@ export class VisitasAgendadasPage {
   formatDate(date: Date): string {
     return format(date, 'dd/MM/yyyy');
   }
-  
+
   visitasAgendadas: VisitaAgendada[] = [
     { fecha: new Date('2023-10-30T10:00:00'), cliente: 'Juan Pérez', direccion: 'los boldos 18, Viña del Mar' },
     { fecha: new Date('2023-10-01T12:00:00'), cliente: 'María González', direccion: 'Las azucenas, Quilpue' },
@@ -29,20 +29,23 @@ export class VisitasAgendadasPage {
   filteredVisitas: VisitaAgendada[] = [];
   visitaSeleccionada: VisitaAgendada | null = null;
   mostrarLista: boolean = false; // Inicialmente, ocultamos la lista
+  dateExample = new Date().toISOString();
+  constructor(private alertController: AlertController, private modalController: ModalController) {}
 
-  constructor(private alertController: AlertController) {}
-
+  async dismissModal() {
+    await this.modalController.dismiss(); // Cierra el modal
+  }
   onDateSelected(event: any) {
     const selectedDate = event.detail.value;
     if (selectedDate) {
       const selectedDateParts = selectedDate.split('T');
       const selectedDateString = selectedDateParts.length > 0 ? selectedDateParts[0] : '';
-  
+
       this.filteredVisitas = this.visitasAgendadas.filter(visita => {
         const visitaDateString = visita.fecha.toISOString().split('T')[0];
         return selectedDateString === visitaDateString;
       });
-  
+
       // Mostrar la lista cuando se selecciona una fecha
       this.mostrarLista = true;
     } else {
@@ -58,5 +61,5 @@ export class VisitasAgendadasPage {
   mostrarNombresClientes() {
     // Aquí mostramos la lista de clientes
     this.mostrarLista = true;
-  }   
+  }
 }

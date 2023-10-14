@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ClientService } from 'src/app/services/client.service';
 import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router';
 interface Cliente {
   numeroCliente: string;
   nombres: string;
@@ -27,7 +28,7 @@ export class CrearClientesPage {
   token: string = ''; // Variable para almacenar el token de acceso
   datos: any; // Variable para almacenar los datos de la API
 
-  constructor(private apiService: ClientService, private storage: Storage) {}
+  constructor(private apiService: ClientService, private storage: Storage, private router: Router) {}
 
   filterItems(event: any) {
     const searchTerm = event.detail.value.toLowerCase();
@@ -58,6 +59,7 @@ export class CrearClientesPage {
         next: (response) => {
 
           this.datos = response;
+          console.log(this.datos);
         },
         error: (error) => {
 
@@ -65,5 +67,9 @@ export class CrearClientesPage {
         },
       });
     }
+  }
+
+  crearVisita(clienteId: number) {
+    this.router.navigate(['/crear-visita', clienteId]);
   }
 }

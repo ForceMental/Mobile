@@ -70,6 +70,40 @@
   margin-left: 10px;
 }
 
+.formulario {
+  margin: 0 20px; /* Margen en ambos lados de la tabla */
+}
+
+.tabla-container {
+  --ion-background-color: transparent;
+
+  .tabla-header ion-col:not(:last-child),
+  .tabla-row ion-col:not(:last-child) {
+    border-right: 1px solid #ccc; /* Línea sutil separadora por columnas */
+  }
+}
+
+.tabla-header,
+.tabla-row {
+  border-bottom: 1px solid #ccc; /* Línea sutil separadora por filas */
+
+  .columna-label {
+    text-align: center; /* Centrar el texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Centrar verticalmente */
+  }
+
+  .boton-agendar ion-button {
+    border-radius: 20px; /* Hace el botón más redondo */
+    font-size: 12px; /* Hace el botón un poco más pequeño */
+    padding: 4px 8px;
+  }
+}
+
+
+
 @media screen and (max-width: 768px) {
   .barra-herramientas {
     font-size: 0.8rem;

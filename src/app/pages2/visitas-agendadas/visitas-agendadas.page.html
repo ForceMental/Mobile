@@ -8,8 +8,23 @@
 
 
   <p class="titulo">Selecciona tu visita</p>
-  <ion-datetime presentation="date" displayFormat="DD/MM/YYYY" placeholder="Selecciona el día" [(ngModel)]="selectedDate"
-    (ionChange)="onDateSelected($event)"></ion-datetime>
+  <ion-list>
+    <ion-item id="open-modal">
+      <ion-label>Modal - Date selection</ion-label>
+      <ion-note slot="end">{{ dateExample | date }}</ion-note>
+    </ion-item>
+    <ion-modal trigger="open-modal" [cssClass]="'center'">
+      <ng-template>
+        <ion-datetime
+          presentation="date"
+          [(ngModel)]="dateExample"
+          size="cover"
+          class="custom-datetime"
+          (ionChange)="dismissModal()"
+        ></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-list>
 
     <ion-list class="lista" *ngIf="mostrarLista">
   <ion-item *ngFor="let visita of filteredVisitas" (click)="setVisitaSeleccionada(visita)">
@@ -17,13 +32,13 @@
   </ion-item>
 </ion-list>
 
-  
-    
+
+
     <div class="botones-container">
       <ion-button class="boton_visualizar-cliente" expand="block" (click)="mostrarNombresClientes()">Mostrar Clientes</ion-button>
       <ion-button class="boton_registrar-cliente" [routerLink]="['/crear-visitas']" expand="block">Crear Visita</ion-button>
     </div>
-  
+
 
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button class="boton_volver" [routerLink]="['/home']">
