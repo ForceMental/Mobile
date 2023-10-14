@@ -8,6 +8,11 @@ import { Storage } from '@ionic/storage-angular';
 export class AuthService {
 
   constructor(private storage: Storage) {
+    this.initStorage();
+  }
+
+  async initStorage() {
+    await this.storage.create();
   }
 
   private generateCodeVerifier(): string {
@@ -57,11 +62,17 @@ export class AuthService {
     const accessToken = authResponse.access_token;
     const refreshToken = authResponse.refresh_token;
 
-    await this.storage.set('access_token', accessToken);
-
+    if (accessToken) {
+      // Almacena el token en segundo plano sin bloquear el flujo principal
+      Promise.resolve().then(async () => {
+        await this.storeAccessToken(accessToken);
+      });
+    }
     return authResponse
   }
 
-
+  async storeAccessToken(accessToken: string): Promise<void> {
+    await this.storage.set('access_token', accessToken);
+  }
 }
 
