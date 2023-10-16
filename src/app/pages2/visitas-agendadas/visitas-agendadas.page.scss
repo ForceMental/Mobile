@@ -15,18 +15,13 @@
   margin-top: 3rem;
 }
 
-
-.boton_visualizar-cliente, .boton_registrar-cliente {
+.boton_registrar-cliente {
 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   width: 48%; /* Establecer el ancho al 48% para que ambos botones tengan el mismo tamaño */
   margin: 0 1%; /* Añadir un pequeño margen entre los botones */
 }
 
-.boton_visualizar-cliente {
-  --background: #127c07;
-
-}
 
 .boton_registrar-cliente {
   --background: #0f077c;
@@ -42,7 +37,16 @@
   margin: 0 16px; /* Margen de 16 píxeles a ambos lados */
 }
 
+p {
+  color: #333; /* Cambia el color a oscuro, por ejemplo, #333 */
+}
+
+#custom-margin {
+margin: 0px , 32px; /* Margen derecho */
+}
+
 @media screen and (max-width: 768px) {
+
   .barra-herramientas {
     font-size: 0.8rem;
   }

@@ -8,24 +8,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="body">
-  
+
   <ion-img src="assets/icon/avatar2.png" alt="imagen ejecutivo"></ion-img>
-  
+
     <ion-list>
       <ion-item>
-        <ion-label>Nombre: Juan Riquelme</ion-label>
+        <ion-label>{{userInfo.first_name}}</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label>Cargo: Ejecutivo de Ventas</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>Ciudad: Viña del Mar</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>Edad: 32</ion-label>
+        <ion-label>{{userInfo.email}}</ion-label>
       </ion-item>
     </ion-list>
-  
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button class="boton" (click)="presentAlert()">
       Salir

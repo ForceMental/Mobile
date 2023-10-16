@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ProductService } from 'src/app/services/product.service';
 
-interface Producto {
-  nombre: string;
-  cantidad: number;
-}
 
 @Component({
   selector: 'app-solicitar-productos',
@@ -13,44 +10,19 @@ interface Producto {
 })
 export class SolicitarProductosPage {
 
-  nombreProducto: string = '';
-  cantidadProducto: number = 0;
-  productosSolicitados: Producto[] = [];
+  products: any[] = [];
 
-  constructor(private alertController: AlertController) {}
+  constructor(private productService: ProductService) {}
 
-  solicitarProducto() {
-    const nuevoProducto: Producto = {
-      nombre: this.nombreProducto,
-      cantidad: this.cantidadProducto
-    };
-    this.productosSolicitados.push(nuevoProducto);
-
-    // Limpiar los campos después de agregar un producto
-    this.nombreProducto = '';
-    this.cantidadProducto = 0;
+  ngOnInit() {
+    this.loadProducts();
   }
 
-  borrarRespuesta() {
-    this.productosSolicitados = []; // Limpiar la lista de productos
-  }
-
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Estás seguro?',
-      cssClass: 'custom-alert',
-      buttons: [
-        {
-          text: 'No',
-          cssClass: 'alert-button-cancel',
-        },
-        {
-          text: 'Yes',
-          cssClass: 'alert-button-confirm',
-        },
-      ],
+  loadProducts() {
+    this.productService.getProducts().subscribe((data) => {
+      this.products = data;
+      console.log(this.products);
     });
-
-    await alert.present();
   }
+
 }

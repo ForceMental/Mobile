@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ClientService } from 'src/app/services/client.service';
 import { Storage } from '@ionic/storage-angular';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 interface Cliente {
   numeroCliente: string;
   nombres: string;
@@ -18,31 +19,14 @@ interface Cliente {
   styleUrls: ['./crear-clientes.page.scss'],
 })
 export class CrearClientesPage {
-  searchTerm: string = '';
-  clientes: Cliente[] = [
-    { numeroCliente: '40', nombres: 'Juan Ignacio', apellidos: 'Perez Vergara', rut: '14848859-8', correo: 'juan@gmail.com', telefono: 973537433, direccion: 'Viña del Mar' },
-    { numeroCliente: '11', nombres: 'Maria', apellidos: 'Lopez', rut: '15758585-4', correo: 'Maria@gmail.com', telefono: 994737831, direccion: 'Quilpue' }
-  ];
 
   selectedCliente: Cliente | null = null;
-  token: string = ''; // Variable para almacenar el token de acceso
+  userInfo: any;
   datos: any; // Variable para almacenar los datos de la API
 
-  constructor(private apiService: ClientService, private storage: Storage, private router: Router) {}
+  constructor(private apiService: ClientService, private storage: Storage, private router: Router, private navCtrl: NavController) {}
 
-  filterItems(event: any) {
-    const searchTerm = event.detail.value.toLowerCase();
-    if (searchTerm) {
-      const filteredCliente = this.clientes.find(cliente =>
-        cliente.nombres.toLowerCase().includes(searchTerm) ||
-        cliente.apellidos.toLowerCase().includes(searchTerm) ||
-        cliente.rut.includes(searchTerm)
-      );
-      this.selectedCliente = filteredCliente ? { ...filteredCliente } : null;
-    } else {
-      this.selectedCliente = null;
-    }
-  }
+
 
   search() {
     // Lógica de búsqueda
@@ -51,25 +35,33 @@ export class CrearClientesPage {
 
   async ionViewWillEnter() {
 
-    this.token = await this.storage.get('access_token');
+    this.apiService.getWithToken().subscribe({
+      next: (response) => {
 
-    if (this.token) {
+        this.datos = response;
+        console.log(this.datos);
+      },
+      error: (error) => {
 
-      this.apiService.getWithToken(this.token).subscribe({
-        next: (response) => {
+        console.error('Error al obtener datos de la API:', error);
+      },
+    });
 
-          this.datos = response;
-          console.log(this.datos);
-        },
-        error: (error) => {
-
-          console.error('Error al obtener datos de la API:', error);
-        },
-      });
-    }
   }
 
   crearVisita(clienteId: number) {
-    this.router.navigate(['/crear-visita', clienteId]);
+    const userInfoString = localStorage.getItem('userInfo');
+    if (userInfoString) {
+      this.userInfo = JSON.parse(userInfoString);
+      const empleadoId = this.userInfo['user-id'];
+      const tipoVisita = 'A'
+      this.navCtrl.navigateForward('/crear-visitas', {
+        queryParams: {
+          cliente_id: clienteId,
+          empleado_id: empleadoId,
+          tipo_visita: tipoVisita
+        }
+      });
+    }
   }
 }

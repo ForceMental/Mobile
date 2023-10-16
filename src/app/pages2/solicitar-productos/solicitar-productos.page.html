@@ -1,50 +1,35 @@
 <ion-header>
   <ion-toolbar class="barra-herramientas">
-    <ion-title>Crear Cliente</ion-title>
+    <ion-title>Productos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="body">
-  <h1 class="titulo">Formulario</h1>
+<ion-content>
+  <ion-grid class="tabla-container">
+    <!-- Encabezados de columna -->
+    <ion-row class="tabla-header">
+      <ion-col size="6">
+        <ion-label class="columna-label-dark">Nombre de Producto</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label class="columna-label-dark">Stock</ion-label>
+      </ion-col>
+    </ion-row>
 
-  <div class="formulario">
-    <form (ngSubmit)="solicitarProducto()">
-      <ion-list>
-        <ion-item>
-          <ion-label position="floating">Nombre del Producto:</ion-label>
-          <ion-input type="text" [(ngModel)]="nombreProducto" name="nombreProducto" required></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">Cantidad:</ion-label>
-          <ion-input type="number" [(ngModel)]="cantidadProducto" name="cantidadProducto" required></ion-input>
-        </ion-item>
-      </ion-list>
-
-      <ion-button class="boton-send" expand="full" type="submit">Enviar</ion-button>
-    </form>
-  </div>
-
-  <div class="respuesta-productos" *ngIf="productosSolicitados.length > 0">
-    <h3 class="titulo">Productos Solicitados</h3>
-    <ion-list>
-      <ion-item class="item-producto" *ngFor="let producto of productosSolicitados">
-        <ion-label>Nombre: {{ producto.nombre }},  <br> Cantidad: {{ producto.cantidad }}</ion-label>
-      </ion-item>
-    </ion-list>
-  
-    <div class="boton-container">
-      <ion-button expand="full" class="boton-borrar" (click)="borrarRespuesta()">Borrar</ion-button>
-      <ion-button class="boton-realizar-venta" (click)="presentAlert()">Realizar venta </ion-button>
-    </div>
-  </div>
-
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <!-- Datos de productos (ejemplo) -->
+    <ion-row *ngFor="let producto of products" class="tabla-row">
+      <ion-col size="6">
+        <ion-label class="columna-label-dark">{{ producto.nombre_producto }}</ion-label>
+      </ion-col>
+      <ion-col size="6">
+        <ion-label class="columna-label-dark">{{ producto.stock_producto }}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" class="fixed-bottom">
     <ion-fab-button class="boton_volver" [routerLink]="['/home']">
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
-
-
 

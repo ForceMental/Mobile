@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { format } from 'date-fns';
+import { VisitaService } from 'src/app/services/visita.service';
 
-interface VisitaAgendada {
-  fecha: Date;
-  cliente: string;
-  direccion: string;
-}
+
 
 @Component({
   selector: 'app-visitas-agendadas',
@@ -17,49 +14,50 @@ export class VisitasAgendadasPage {
   formatDate(date: Date): string {
     return format(date, 'dd/MM/yyyy');
   }
-
-  visitasAgendadas: VisitaAgendada[] = [
-    { fecha: new Date('2023-10-30T10:00:00'), cliente: 'Juan Pérez', direccion: 'los boldos 18, Viña del Mar' },
-    { fecha: new Date('2023-10-01T12:00:00'), cliente: 'María González', direccion: 'Las azucenas, Quilpue' },
-    { fecha: new Date('2023-10-01T14:00:00'), cliente: 'Carlos Valverde', direccion: 'Las palmas, Viña del Mar' },
-    { fecha: new Date('2023-10-01T17:00:00'), cliente: 'Esteban Paredes', direccion: 'Los monos, Viña del Mar' },
-  ];
-
-  selectedDate: string | null = null;
-  filteredVisitas: VisitaAgendada[] = [];
-  visitaSeleccionada: VisitaAgendada | null = null;
+  selectedDate: any | null = null;
   mostrarLista: boolean = false; // Inicialmente, ocultamos la lista
   dateExample = new Date().toISOString();
-  constructor(private alertController: AlertController, private modalController: ModalController) {}
+  visitas: any[] = [];
+  acordeonAbierto: number | null = null;
 
-  async dismissModal() {
-    await this.modalController.dismiss(); // Cierra el modal
+  constructor(private alertController: AlertController, private modalController: ModalController,
+    private visitasService: VisitaService) {
+
+    }
+
+
+
+
+  ngOnInit(): void {
+    //console.log(this.dateExample);
   }
-  onDateSelected(event: any) {
-    const selectedDate = event.detail.value;
-    if (selectedDate) {
-      const selectedDateParts = selectedDate.split('T');
-      const selectedDateString = selectedDateParts.length > 0 ? selectedDateParts[0] : '';
-
-      this.filteredVisitas = this.visitasAgendadas.filter(visita => {
-        const visitaDateString = visita.fecha.toISOString().split('T')[0];
-        return selectedDateString === visitaDateString;
-      });
-
-      // Mostrar la lista cuando se selecciona una fecha
-      this.mostrarLista = true;
+  toggleAcordeon(i: number) {
+    if (this.acordeonAbierto === i) {
+      this.acordeonAbierto = null; // Cierra el acordeón si se hace clic nuevamente en él
     } else {
-      this.filteredVisitas = [];
-      this.mostrarLista = false; // Ocultar la lista si no hay fecha seleccionada
+      this.acordeonAbierto = i; // Abre el acordeón correspondiente
     }
   }
 
-  setVisitaSeleccionada(visita: VisitaAgendada) {
-    this.visitaSeleccionada = visita;
+
+  async dismissModal() {
+    await this.modalController.dismiss(); // Cierra el modal
+    const partes = this.dateExample.split('T')[0].split('-');
+    const fechaFormateada = `${partes[2]}-${partes[1]}-${partes[0]}`;
+    console.log(fechaFormateada);
+    this.visitasService.getVisitasByDate(fechaFormateada).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.visitas = data;
+      },
+      error: (error) => {
+        console.error('Error al obtener las visitas:', error);
+      },
+      complete: () => {
+        // Manejar la notificación de completa (opcional)
+      }
+    });
+
   }
 
-  mostrarNombresClientes() {
-    // Aquí mostramos la lista de clientes
-    this.mostrarLista = true;
-  }
 }

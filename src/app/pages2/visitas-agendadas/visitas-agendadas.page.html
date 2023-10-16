@@ -7,7 +7,7 @@
 <ion-content [fullscreen]="true" class="body">
 
 
-  <p class="titulo">Selecciona tu visita</p>
+  <p class="titulo">Selecciona tu fecha de visita</p>
   <ion-list>
     <ion-item id="open-modal">
       <ion-label>Modal - Date selection</ion-label>
@@ -26,18 +26,27 @@
     </ion-modal>
   </ion-list>
 
-    <ion-list class="lista" *ngIf="mostrarLista">
-  <ion-item *ngFor="let visita of filteredVisitas" (click)="setVisitaSeleccionada(visita)">
-    {{ visita.cliente }}
-  </ion-item>
-</ion-list>
-
-
-
+  <ion-content class="lista" *ngIf="visitas && visitas.length > 0">
+    <p class="titulo">Visitas</p>
+    <ion-accordion-group id="custom-margin">
+      <ion-accordion *ngFor="let visita of visitas; let i = index" [value]="i">
+        <ion-item slot="header" color="primary" (click)="toggleAcordeon(i)">
+          <ion-label class="header-label">{{ visita.fecha_visita }} / {{ visita.cliente.nombre }}</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content" [hidden]="acordeonAbierto !== i">
+          <ion-text color="dark">
+            <p>Tipo de Visita: {{ visita.tipo_visita }}</p>
+            <p>Cliente: {{ visita.cliente.nombre }} {{ visita.cliente.apellido }}</p>
+            <p>Dirección: {{ visita.cliente.direccion }}, ({{ visita.cliente.comuna }}, {{ visita.cliente.region }})</p>
+          </ion-text>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-content>
+<!--
     <div class="botones-container">
-      <ion-button class="boton_visualizar-cliente" expand="block" (click)="mostrarNombresClientes()">Mostrar Clientes</ion-button>
       <ion-button class="boton_registrar-cliente" [routerLink]="['/crear-visitas']" expand="block">Crear Visita</ion-button>
-    </div>
+    </div> -->
 
 
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">

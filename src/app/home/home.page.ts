@@ -8,12 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  userInfo: any;
+  constructor(private alertController: AlertController, private router: Router) {
+    const userInfoString = localStorage.getItem('userInfo');
+    if (userInfoString) {
+      this.userInfo = JSON.parse(userInfoString);
+    }
+  }
 
-  constructor(private alertController: AlertController, private router: Router) { }
+
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      
+
       message: '¿Estás seguro que quieres cerrar la aplicación?',
       buttons: [
         {

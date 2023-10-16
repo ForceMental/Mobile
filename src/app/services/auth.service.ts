@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { OAuth2Client } from '@byteowls/capacitor-oauth2';
 import { Storage } from '@ionic/storage-angular';
-
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, private http: HttpClient) {
     this.initStorage();
   }
 
@@ -68,11 +70,31 @@ export class AuthService {
         await this.storeAccessToken(accessToken);
       });
     }
+    if (accessToken) {
+      // Define las cabeceras de autorización con el token
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${accessToken}`,
+      });
+
+      // Realiza la solicitud HTTP con el token de acceso en el encabezado
+      try {
+        const userInfo = await firstValueFrom(this.http.get(`${environment.apiUrl}/api/view_users/`, { headers }));
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+        console.log('Información del usuario:', userInfo);
+      } catch (error) {
+        console.error('Error al obtener la información del usuario:', error);
+      }
+    }
+    console.log(accessToken);
     return authResponse
   }
 
   async storeAccessToken(accessToken: string): Promise<void> {
     await this.storage.set('access_token', accessToken);
+  }
+
+  getAuthToken() {
+    return this.storage.get('access_token');
   }
 }
 
