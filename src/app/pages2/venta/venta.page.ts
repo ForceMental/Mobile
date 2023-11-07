@@ -1,26 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-venta',
   templateUrl: './venta.page.html',
   styleUrls: ['./venta.page.scss'],
 })
-export class VentaPage implements OnInit {
-  formData: any = {
-    rut: '',
-    nombre: '',
-    apellido: '',
-    telefono: '',
-    correo_electronico: '',
-    direccion: '',
-    comuna: 1,
-    nombre_producto: '',
-    stock: '',
-  };
+export class VentaPage {
+  formData: any = {}; // Tu modelo de datos
 
-  constructor() {}
+  constructor(private alertController: AlertController) {}
 
-  ngOnInit() {}
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Confirmar Envío',
+      message: '¿Deseas enviar el formulario?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            // El usuario eligió "No", no se realiza ninguna acción
+          }
+        },
+        {
+          text: 'Sí',
+          handler: () => {
+            // El usuario eligió "Sí", aquí puedes enviar el formulario
+            this.submitForm(); // Llama a tu función submitForm
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 
   submitForm() {
     // Aquí puedes acceder a los datos del formulario usando this.formData y enviarlos a través de una solicitud HTTP o realizar cualquier otro procesamiento necesario.
@@ -39,4 +54,3 @@ export class VentaPage implements OnInit {
     // );
   }
 }
-
