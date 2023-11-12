@@ -3,7 +3,7 @@ import { OAuth2Client } from '@byteowls/capacitor-oauth2';
 import { Storage } from '@ionic/storage-angular';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
