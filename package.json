@@ -38,11 +38,13 @@
     "@ionic/storage-angular": "^4.0.0",
     "angular-oauth2-oidc": "^15.0.1",
     "bootstrap": "^5.3.1",
+    "cordova-plugin-file": "^6.0.2",
     "date-fns": "^2.30.0",
     "ion2-calendar": "^3.5.0",
     "ionicons": "^7.0.0",
     "moment": "^2.29.4",
     "rxjs": "~7.8.0",
+    "ts-evaluator": "^1.2.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
