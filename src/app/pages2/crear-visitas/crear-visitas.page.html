@@ -11,7 +11,11 @@
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">Tipo de Visita:</ion-label>
-            <ion-select placeholder="Selecciona el tipo de visita" [(ngModel)]="formulario.tipo_visita" disabled>
+            <ion-select
+              placeholder="Selecciona el tipo de visita"
+              [(ngModel)]="formulario.tipo_visita"
+              disabled
+            >
               {{formulario.tipo_visita}}
             </ion-select>
           </ion-item>
@@ -19,15 +23,13 @@
 
         <ion-col size="12">
           <ion-item>
-            <ion-label position="floating">Cliente ID:</ion-label>
-            <ion-input placeholder="Cliente ID" [(ngModel)]="formulario.cliente_id" disabled>{{formulario.cliente_id}}</ion-input>
-          </ion-item>
-        </ion-col>
-
-        <ion-col size="12">
-          <ion-item>
             <ion-label position="floating">Empleado ID:</ion-label>
-            <ion-input placeholder="Empleado ID" [(ngModel)]="formulario.empleado_id" disabled>{{formulario.empleado_id}}</ion-input>
+            <ion-input
+              placeholder="Empleado ID"
+              [(ngModel)]="formulario.empleado_id"
+              disabled
+              >{{formulario.empleado_id}}</ion-input
+            >
           </ion-item>
         </ion-col>
 
@@ -35,7 +37,9 @@
           <ion-list>
             <ion-item>
               <ion-label>Fecha de Visita:</ion-label>
-              <ion-note slot="end">{{dateExample | date:'dd-MM-yyyy'}} </ion-note>
+              <ion-note slot="end"
+                >{{dateExample | date:'dd-MM-yyyy'}}
+              </ion-note>
             </ion-item>
             <ion-item id="open-modal">
               <ion-label>Modal - Date selection</ion-label>
@@ -57,14 +61,16 @@
     </ion-grid>
   </div>
 
-
   <ion-button expand="full" (click)="enviarFormulario()">Enviar</ion-button>
 
-
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed" class="fixed-bottom">
+  <ion-fab
+    vertical="bottom"
+    horizontal="start"
+    slot="fixed"
+    class="fixed-bottom"
+  >
     <ion-fab-button class="boton_volver" [routerLink]="['/home']">
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
-

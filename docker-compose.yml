@@ -1,0 +1,20 @@
+version: '3'
+services:
+  ionic-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8100:8100" # Puerto de desarrollo de Ionic
+      - "35729:35729" # Puerto de livereload de Ionic
+    volumes:
+      - .:/usr/src/app # Monta el directorio de la aplicación en el contenedor
+    depends_on:
+      - web-server
+
+  web-server:
+    image: nginx:latest
+    ports:
+      - "80:80" # Puerto para servir la aplicación web
+    volumes:
+      - ./www:/usr/share/nginx/html # Monta el directorio de salida de Ionic en el contenedor de NGINX
