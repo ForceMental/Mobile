@@ -35,6 +35,6 @@ export class ClientService {
       Authorization: `Bearer ${token}`,
     });
 
-    return this.http.post(`${environment.apiUrl}/api/ingreso_clientes/`, data, { headers });
+    return this.http.post(`${environment.apiUrl2}/api/ingreso_clientes/`, data, { headers });
   }
 }

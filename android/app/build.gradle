@@ -55,5 +55,5 @@ try {
 
 android.defaultConfig.manifestPlaceholders = [
   // change to the 'custom_url_scheme' value in your strings.xml. They need to be the same. e.g.
-  "appAuthRedirectScheme": "http://localhost:8100/home"
+  "appAuthRedirectScheme": "https://force-a5ba7.web.app/home"
 ]
