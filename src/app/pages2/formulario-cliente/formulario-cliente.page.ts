@@ -10,7 +10,7 @@ import { DescripcionProductosPage } from '../descripcion-productos/descripcion-p
 })
 export class FormularioClientePage implements OnInit {
   formData: any = {
-    nombre: 'aaa',
+    nombre: '',
     apellido: '',
     telefono: '',
     correo_electronico: '',

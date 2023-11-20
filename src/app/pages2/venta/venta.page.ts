@@ -10,8 +10,11 @@ import { ProductService } from 'src/app/services/product.service';
 export class VentaPage implements OnInit {
   formData: any = {};
   listaProductos: any[] = [];
-  nuevoProducto: any = {};
+  nombre_producto: any = {};
   products: any[] = [];
+  productoSeleccionado: any = {};
+  
+
 
   constructor(
     private alertController: AlertController,
@@ -30,6 +33,66 @@ export class VentaPage implements OnInit {
       console.log(this.products);
     });
   }
+ // Agrega esta función
+ async mostrarMensajeExito(mensaje: string) {
+  const alert = await this.alertController.create({
+    header: 'Éxito',
+    message: mensaje,
+    buttons: ['OK'],
+  });
+  await alert.present();
+}
+  
+
+  realizarAccion(producto: any) {
+    // Establecer el producto seleccionado como nombre_producto
+    this.nombre_producto = { ...producto, cantidad: 1 }; // Inicializar cantidad en 1
+  }
+  
+  agregarProducto(producto: any) {
+    if (producto && producto.nombre) {
+      // Verificar si el producto ya está en la lista
+      const productoExistente = this.listaProductos.find((p) => p.nombre === producto.nombre);
+
+      if (!productoExistente) {
+        // Agregar el producto a la lista con la cantidad
+        this.listaProductos.push({ ...producto, cantidad: producto.cantidad || 1 });
+        this.mostrarMensajeExito('Producto agregado correctamente.');
+      } else {
+        // El producto ya está en la lista, puedes manejar esto según tus necesidades
+        this.mostrarMensajeError('El producto ya está en la lista.');
+      }
+    } else {
+      this.mostrarMensajeError('El producto no tiene un nombre válido.');
+    }
+  }
+  
+  disminuirCantidad(producto: any) {
+    // Disminuir la cantidad del producto
+    if (producto.cantidad && producto.cantidad > 1) {
+      producto.cantidad -= 1;
+    }
+  }
+  
+  aumentarCantidad(producto: any) {
+    // Aumentar la cantidad del producto
+    producto.cantidad = (producto.cantidad || 0) + 1;
+  }
+  
+  
+  
+
+  async mostrarMensajeError(mensaje: string) {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: mensaje,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+
+
+
 
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
@@ -60,56 +123,5 @@ export class VentaPage implements OnInit {
   enviarVenta() {
     console.log('Venta enviada:');
     // Aquí puedes realizar acciones adicionales después de enviar la venta
-  }
-
-  realizarAccion(producto: any) {
-    // Establecer el producto seleccionado como nuevoProducto
-    this.nuevoProducto = { ...producto, cantidad: 1 }; // Inicializar cantidad en 1
-  }
-  
-
-  agregarNuevoProducto(producto: any) {
-    // Validar que el nombre del producto no esté en la lista antes de agregarlo
-    if (producto && producto.nombre) {
-      if (!this.listaProductos.some((p) => p.nombre === producto.nombre)) {
-        this.listaProductos.push({ nombre: producto.nombre });
-        // Actualizar el nuevoProducto para mostrar el último producto agregado
-        this.nuevoProducto = { nombre: producto.nombre, cantidad: 1 };
-      } else {
-        // Si el producto ya está en la lista, puedes mostrar un mensaje o realizar alguna acción adicional
-        console.log('El producto ya está en la lista.');
-      }
-    } else {
-      // Si el producto no tiene un nombre, puedes mostrar un mensaje de error o realizar alguna acción adicional
-      console.log('El producto no tiene un nombre válido.');
-    }
-  }
-  
-  
-  
-
-    // Limpiar el nuevo producto para futuras adiciones
-   
-  
-  // Incrementa la cantidad del nuevo producto
-  disminuirCantidad() {
-    if (this.nuevoProducto.cantidad && this.nuevoProducto.cantidad > 1) {
-      this.nuevoProducto.cantidad -= 1;
-    }
-  }
-  
-  aumentarCantidad() {
-    this.nuevoProducto.cantidad = (this.nuevoProducto.cantidad || 0) + 1;
-  }
-  
-  
-
-  async mostrarMensajeError(mensaje: string) {
-    const alert = await this.alertController.create({
-      header: 'Error',
-      message: mensaje,
-      buttons: ['OK'],
-    });
-    await alert.present();
   }
 }

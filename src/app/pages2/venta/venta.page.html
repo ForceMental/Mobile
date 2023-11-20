@@ -5,6 +5,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="body">
+
+  <div class="titulo-cliente">
+    <p>Datos del Cliente</p>
+  </div>
+
   <!-- Rectángulo con datos -->
   <div class="rectangulo">
     <p>Nombre: {{ formData.nombre }}</p>
@@ -12,66 +17,63 @@
     <p>Dirección: {{ formData.direccion }}</p>
   </div>
 
- <!-- Sección para el producto -->
-<div class="seccion-producto">
-  <ion-card class="cuadrado-producto">
-    <!-- Contenido del cuadrado del producto -->
-    
-    <ion-card-content>
-      <!-- Muestra el nombre del nuevo producto -->
-      <ion-label>{{ nuevoProducto.nombre }}</ion-label>
-      <!-- Input numérico para la cantidad -->
-      <ion-item>
-        <ion-label position="floating">Cantidad:</ion-label>
-        <ion-input [(ngModel)]="nuevoProducto.cantidad" name="cantidad" type="number"></ion-input>
-      </ion-item>
-    </ion-card-content>
-    <ion-row class="botones-cantidad">
-      <!-- Botones de aumento y disminución -->
-<ion-col size="6">
-  <ion-button expand="full" (click)="disminuirCantidad()">-</ion-button>
-</ion-col>
-<ion-col size="6">
-  <ion-button expand="full" (click)="aumentarCantidad()">+</ion-button>
-</ion-col>
+  <!-- Sección sumar productos -->
+  <div class="seccion-cantidad">
+    <ion-card>
+      <ion-card-content>
+        <div class="container">
+          <ion-item>
+            <ion-label position="floating">Nombre:</ion-label>
+            <ion-input [(ngModel)]="nombre_producto.nombre_producto" name="nombre" type="text"></ion-input>
+          </ion-item>
+          
+          <ion-row class="botones-cantidad">
+            <ion-col size="6">
+              <ion-button class="agregar-producto" (click)="disminuirCantidad(nombre_producto)">-</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button class="agregar-producto" (click)="aumentarCantidad(nombre_producto)">+</ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
-    </ion-row>
-  </ion-card>
-</div>
+  <!-- Seccion carga de datos -->
+  <div class="seccion-datos-producto">
+    <ion-card>
+      <ion-card-content>
+        <ion-grid class="tabla-container">
+          <!-- Encabezados de columna -->
+          <ion-row class="tabla-header">
+            <ion-col size="6">
+              <ion-label class="encabezado-lista">Nombre de Producto</ion-label>
+            </ion-col>
+            <ion-col size="6">
+              <ion-label class="encabezado-lista">Acciones</ion-label>
+            </ion-col>
+          </ion-row>
 
-
-
-<!-- Datos de productos -->
-<ion-grid class="tabla-container">
-  <!-- Encabezados de columna -->
-  <ion-row class="tabla-header">
-    <ion-col size="6">
-      <ion-label class="columna-label-dark">Nombre de Producto</ion-label>
-    </ion-col>
-    <ion-col size="6">
-      <ion-label class="columna-label-dark">Acciones</ion-label>
-    </ion-col>
-  </ion-row>
-
-  <!-- Datos de productos -->
-  <ion-row *ngFor="let producto of products" class="tabla-row">
-    <ion-col size="6">
-      <ion-label class="columna-label-dark">{{ producto.nombre_producto }}</ion-label>
-    </ion-col>
-    <ion-col size="6">
-      <!-- Agrega un botón para cada producto -->
-      <ion-button (click)="realizarAccion(producto)">Agregar Producto</ion-button>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-
-
+          <!-- Datos de los productos -->
+          <ion-row *ngFor="let producto of products" class="tabla-row">
+            <ion-col size="6">
+              <ion-label class="columna-label-dark">{{ producto.nombre_producto }}</ion-label>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button class="boton-agregar-producto" (click)="realizarAccion(producto)">Agregar</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
   <!-- Botón "Enviar Venta" con confirmación -->
   <ion-button expand="full" (click)="presentAlertConfirm()">Enviar Venta</ion-button>
 
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button class="boton_volver" [routerLink]="['/home']">
+    <ion-fab-button class="boton-volver" [routerLink]="['/home']">
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
