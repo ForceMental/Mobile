@@ -9,11 +9,17 @@ import { AuthService } from './auth.service';
 })
 export class VisitaService {
 
-
+  idEmpleado: number = 0;
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   getVisitasByDate(date: string): Observable<any> {
+    const userInfoString = localStorage.getItem('userInfo');
+    if (userInfoString) {
+      const userInfo = JSON.parse(userInfoString);
+      this.idEmpleado = userInfo['user-id'];
+    }
+    console.log(this.idEmpleado);
     return from(this.authService.getAuthToken()).pipe(
       mergeMap((token) => {
         const headers = new HttpHeaders({
@@ -21,7 +27,7 @@ export class VisitaService {
         });
 
         const params = new HttpParams()
-          .set('id_empleado', 100)
+          .set('id_empleado', this.idEmpleado)
           .set('fecha', date);
 
         return this.http.get(`https://forcemental.azure-api.net/visita/api/visitasIdFecha/`, { headers, params });

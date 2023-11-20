@@ -157,13 +157,18 @@ export class VentaPage implements OnInit {
 
   enviarVenta() {
     console.log('Venta enviada:');
+    const userInfoString = localStorage.getItem('userInfo');
+    if (userInfoString) {
+      const userInfo = JSON.parse(userInfoString);
+      const ejecutivoId = userInfo['user-id'];
     const datosVenta = {
       productos: this.productoSeleccionado, // Debes llenar esto con la información de los productos
       compra_confirmada: true,
       cliente_id: this.cliente.id, //
       visita_id: this.cliente.idVisita,
-      ejecutivo_id: this.cliente.ejecutivoId
+      ejecutivo_id: ejecutivoId
     };
+    console.log(datosVenta.ejecutivo_id);
     this.ventaService.realizarVenta(datosVenta).subscribe(
       response => {
         console.log('Venta enviada con éxito', response);
@@ -174,5 +179,6 @@ export class VentaPage implements OnInit {
         // Aquí manejas el error
       }
     );
+  }
   }
 }
