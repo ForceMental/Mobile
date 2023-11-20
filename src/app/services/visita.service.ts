@@ -46,4 +46,9 @@ export class VisitaService {
       })
     );
   }
+
+  reprogramarVisita(visitaId: number, nuevaFecha: string) {
+    const url = `http://107.22.174.168:8000/api/reprogramar/${visitaId}/`; // Reemplaza <tu-host> con tu dirección de servidor
+    return this.http.patch(url, { fecha_visita: nuevaFecha });
+  }
 }

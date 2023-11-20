@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { format } from 'date-fns';
 import { VisitaService } from 'src/app/services/visita.service';
 
@@ -21,7 +21,7 @@ export class VisitasAgendadasPage {
   acordeonAbierto: number | null = null;
 
   constructor(private alertController: AlertController, private modalController: ModalController,
-    private visitasService: VisitaService) {
+    private visitasService: VisitaService, public navCtrl: NavController) {
 
     }
 
@@ -30,6 +30,12 @@ export class VisitasAgendadasPage {
 
   ngOnInit(): void {
     //console.log(this.dateExample);
+  }
+
+  reprogramarVisita(visitaId: number) {
+    this.navCtrl.navigateForward('/reprogramar-visitas', {
+      queryParams: { id: visitaId }
+    });
   }
   toggleAcordeon(i: number) {
     if (this.acordeonAbierto === i) {
