@@ -1,20 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-venta',
   templateUrl: './venta.page.html',
   styleUrls: ['./venta.page.scss'],
 })
-export class VentaPage {
-  formData: any = {}; // Tu modelo de datos
-  listaProductos: any[] = []; // Aquí deberías tener la lista de productos que vas a mostrar en la página
-  nuevoProducto: any = { // Agrega esta línea para declarar nuevoProducto
-    nombre: '',
-    cantidad: 1,
-  };
+export class VentaPage implements OnInit {
+  formData: any = {};
+  listaProductos: any[] = [];
+  nuevoProducto: any = {};
+  products: any[] = [];
 
-  constructor(private alertController: AlertController) {}
+  constructor(
+    private alertController: AlertController,
+    private productService: ProductService
+  ) {}
+
+  ngOnInit() {
+    // Llamada al servicio para obtener productos al inicializar el componente
+    this.loadProducts();
+  }
+
+
+  loadProducts() {
+    this.productService.getProducts().subscribe((data) => {
+      this.products = data;
+      console.log(this.products);
+    });
+  }
 
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
@@ -33,7 +48,7 @@ export class VentaPage {
           text: 'Sí',
           handler: () => {
             // El usuario eligió "Sí", aquí puedes enviar la venta
-            this.enviarVenta(); // Llama a tu función enviarVenta
+            this.enviarVenta();
           },
         },
       ],
@@ -43,52 +58,51 @@ export class VentaPage {
   }
 
   enviarVenta() {
-    // Aquí puedes acceder a los datos de la venta y realizar cualquier acción necesaria
-    console.log('Venta enviada:', this.formData, this.listaProductos);
-
-  
+    console.log('Venta enviada:');
+    // Aquí puedes realizar acciones adicionales después de enviar la venta
   }
 
-  // Las funciones para manejar la cantidad y la lista de productos también deben agregarse aquí
-  disminuirCantidad() {
-    // Lógica para disminuir la cantidad
-  }
-
-  aumentarCantidad() {
-    
+  realizarAccion(producto: any) {
+    // Establecer el producto seleccionado como nuevoProducto
+    this.nuevoProducto = { ...producto, cantidad: 1 }; // Inicializar cantidad en 1
   }
   
 
-  agregarNuevoProducto() {
-    // Validar que el nombre del producto no esté vacío
-    if (this.nuevoProducto.nombre.trim() !== '') {
-      // Agregar el nuevo producto a la lista de productos sin la cantidad
-      this.listaProductos.push({
-        nombre: this.nuevoProducto.nombre,
-      });
-  
-      // Agregar manualmente "Cámara" y "Película" al presionar el botón solo si el producto ingresado no es "Cámara" ni "Película"
-      if (this.nuevoProducto.nombre !== 'Cámara' && this.nuevoProducto.nombre !== 'Película') {
-        this.listaProductos.push({ nombre: 'Cámara' });
-        this.listaProductos.push({ nombre: 'Película' });
+  agregarNuevoProducto(producto: any) {
+    // Validar que el nombre del producto no esté en la lista antes de agregarlo
+    if (producto && producto.nombre) {
+      if (!this.listaProductos.some((p) => p.nombre === producto.nombre)) {
+        this.listaProductos.push({ nombre: producto.nombre });
+        // Actualizar el nuevoProducto para mostrar el último producto agregado
+        this.nuevoProducto = { nombre: producto.nombre, cantidad: 1 };
+      } else {
+        // Si el producto ya está en la lista, puedes mostrar un mensaje o realizar alguna acción adicional
+        console.log('El producto ya está en la lista.');
       }
-  
-      // Limpiar el nuevo producto para futuras adiciones
-      this.nuevoProducto = {
-        nombre: '', // Limpiar solo el nombre, no se necesita repetir 'camara' y 'pelicula'
-        cantidad: 1,
-      };
     } else {
-      // Mostrar un mensaje de error si el nombre del producto está vacío
-      this.mostrarMensajeError('El nombre del producto no puede estar vacío.');
+      // Si el producto no tiene un nombre, puedes mostrar un mensaje de error o realizar alguna acción adicional
+      console.log('El producto no tiene un nombre válido.');
     }
   }
   
   
+  
 
-  eliminarProducto(producto: any) {
-    // Lógica para eliminar un producto de la lista
+    // Limpiar el nuevo producto para futuras adiciones
+   
+  
+  // Incrementa la cantidad del nuevo producto
+  disminuirCantidad() {
+    if (this.nuevoProducto.cantidad && this.nuevoProducto.cantidad > 1) {
+      this.nuevoProducto.cantidad -= 1;
+    }
   }
+  
+  aumentarCantidad() {
+    this.nuevoProducto.cantidad = (this.nuevoProducto.cantidad || 0) + 1;
+  }
+  
+  
 
   async mostrarMensajeError(mensaje: string) {
     const alert = await this.alertController.create({
