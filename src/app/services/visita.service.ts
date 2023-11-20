@@ -21,10 +21,10 @@ export class VisitaService {
         });
 
         const params = new HttpParams()
-          .set('id_empleado', 200)
+          .set('id_empleado', 100)
           .set('fecha', date);
-        console.log(`${environment.apiUrl2}/api/visitas/`, { headers, params });
-        return this.http.get(`${environment.apiUrl2}/api/visitasIdFecha/`, { headers, params });
+
+        return this.http.get(`https://forcemental.azure-api.net/visita/api/visitasIdFecha/`, { headers, params });
       })
     );
   }
@@ -39,7 +39,7 @@ export class VisitaService {
         });
 
         // URL para la solicitud POST
-        const url = `${environment.apiUrl2}/api/visitas-crear/`;
+        const url = `https://forcemental.azure-api.net/visita/api/visitas/`;
 
         // Realizar la solicitud HTTP con los encabezados
         return this.http.post(url, formularioCompleto, { headers });
@@ -48,7 +48,17 @@ export class VisitaService {
   }
 
   reprogramarVisita(visitaId: number, nuevaFecha: string) {
-    const url = `http://107.22.174.168:8000/api/reprogramar/${visitaId}/`; // Reemplaza <tu-host> con tu dirección de servidor
+    const url = `https://forcemental.azure-api.net/visita/api/reprogramar/${visitaId}/`;
     return this.http.patch(url, { fecha_visita: nuevaFecha });
+  }
+
+  finalizarVisita(visitaId: number) {
+    const url = `https://forcemental.azure-api.net/visita/api/visita/${visitaId}/finalizar/`;
+    return this.http.post(url, {});
+  }
+
+  cancelarVisita(visitaId: number) {
+    const url = `https://forcemental.azure-api.net/visita/api/visita/${visitaId}/cancelar/`;
+    return this.http.post(url, {});
   }
 }

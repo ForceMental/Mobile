@@ -61,7 +61,42 @@
   margin-top: 14px;
 }
 
+.producto-seleccionado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+  background: #f8f8f8;
+  margin-bottom: 10px;
+}
 
+.producto-nombre {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.producto-cantidad {
+  display: flex;
+  align-items: center;
+}
+
+.cantidad-input {
+  max-width: 60px;
+  text-align: center;
+}
+
+ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  margin: 0 5px;
+}
+
+ion-icon {
+  font-size: 20px;
+}
 
 
 /* Estilos para dispositivos móviles */
@@ -85,5 +120,5 @@
   }
 
 
-  
+
 }

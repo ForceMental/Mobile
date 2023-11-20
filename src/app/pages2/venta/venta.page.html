@@ -12,30 +12,34 @@
 
   <!-- Rectángulo con datos -->
   <div class="rectangulo">
-    <p>Nombre: {{ formData.nombre }}</p>
-    <p>RUT: {{ formData.rut }}</p>
-    <p>Dirección: {{ formData.direccion }}</p>
+    <p>Nombre: {{ cliente.nombre }}</p>
+    <p>RUT: {{ cliente.rut }}</p>
+    <p>Dirección: {{ cliente.direccion }}</p>
   </div>
 
   <!-- Sección sumar productos -->
-  <div class="seccion-cantidad">
+  <div class="seccion-productos-seleccionados">
     <ion-card>
       <ion-card-content>
-        <div class="container">
-          <ion-item>
-            <ion-label position="floating">Nombre:</ion-label>
-            <ion-input [(ngModel)]="nombre_producto.nombre_producto" name="nombre" type="text"></ion-input>
-          </ion-item>
-          
-          <ion-row class="botones-cantidad">
-            <ion-col size="6">
-              <ion-button class="agregar-producto" (click)="disminuirCantidad(nombre_producto)">-</ion-button>
-            </ion-col>
-            <ion-col size="6">
-              <ion-button class="agregar-producto" (click)="aumentarCantidad(nombre_producto)">+</ion-button>
+        <ion-grid>
+          <ion-row>
+            <!-- Bucle para iterar sobre cada producto seleccionado -->
+            <ion-col size="12" size-md="6" *ngFor="let producto of productoSeleccionado">
+              <div class="producto-seleccionado">
+                <ion-label class="producto-nombre">{{ producto.nombre_producto }}</ion-label>
+                <div class="producto-cantidad">
+                  <ion-button fill="clear" size="small" (click)="disminuirCantidad(producto)">
+                    <ion-icon name="remove-outline"></ion-icon>
+                  </ion-button>
+                  <ion-input class="cantidad-input" type="number" [(ngModel)]="producto.cantidad"></ion-input>
+                  <ion-button fill="clear" size="small" (click)="aumentarCantidad(producto)">
+                    <ion-icon name="add-outline"></ion-icon>
+                  </ion-button>
+                </div>
+              </div>
             </ion-col>
           </ion-row>
-        </div>
+        </ion-grid>
       </ion-card-content>
     </ion-card>
   </div>

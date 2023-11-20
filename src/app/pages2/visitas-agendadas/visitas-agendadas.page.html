@@ -47,13 +47,16 @@
           </ion-text>
           <ion-row>
             <ion-col>
-              <ion-button expand="block" >Venta</ion-button>
+              <ion-button expand="block"  (click)="realizarVenta(visita , visita.cliente)">Venta</ion-button>
             </ion-col>
             <ion-col>
               <ion-button expand="block" (click)="reprogramarVisita(visita.id)">Reprogramar</ion-button>
             </ion-col>
             <ion-col>
-              <ion-button expand="block" color="danger" >Cancelar</ion-button>
+              <ion-button expand="block" color="danger" (click)="cancelarVisita(visita.id)" >Cancelar</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="block" (click)="finalizarVisita(visita.id)" >Finalizar</ion-button>
             </ion-col>
           </ion-row>
         </div>
