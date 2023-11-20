@@ -18,7 +18,8 @@ export class ClientService {
     return from(this.authService.getAuthToken()).pipe(
       mergeMap((token) => {
         const headers = new HttpHeaders({
-          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json', // Asegúrate de que el servidor acepte este encabezado.
+          'Authorization': `Bearer ${token}`,
         });
 
         return this.http.get(`${environment.apiUrl}/api/clientes/`, { headers });

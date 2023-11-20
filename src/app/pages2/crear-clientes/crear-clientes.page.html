@@ -9,6 +9,15 @@
     show-clear-button="focus"
     value="Show on Focus"
   ></ion-searchbar>
+  <div class="botones-container">
+    <ion-button class="boton-search" expand="block">Buscar Cliente</ion-button>
+    <ion-button
+      class="boton-crear-cliente"
+      [routerLink]="['/formulario-cliente']"
+      expand="block"
+      >Crear Cliente</ion-button
+    >
+  </div>
   <div class="formulario fondo-formulario" *ngIf="datos">
     <ion-grid class="tabla-container">
       <!-- Encabezados de columna -->
@@ -50,16 +59,6 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
-
-  <div class="botones-container">
-    <ion-button class="boton-search" expand="block">Buscar Cliente</ion-button>
-    <ion-button
-      class="boton-crear-cliente"
-      [routerLink]="['/formulario-cliente']"
-      expand="block"
-      >Crear Cliente</ion-button
-    >
   </div>
 
   <ion-fab
