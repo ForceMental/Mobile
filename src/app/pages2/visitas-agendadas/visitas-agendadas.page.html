@@ -35,10 +35,30 @@
         </ion-item>
         <div class="ion-padding" slot="content" [hidden]="acordeonAbierto !== i">
           <ion-text color="dark">
-            <p>Tipo de Visita: {{ visita.tipo_visita }}</p>
-            <p>Cliente: {{ visita.cliente.nombre }} {{ visita.cliente.apellido }}</p>
+            <ion-row>
+              <ion-col>
+                <p>Tipo de Visita: {{ visita.tipo_visita }}</p>
+              </ion-col>
+              <ion-col>
+                <p>Cliente: {{ visita.cliente.nombre }} {{ visita.cliente.apellido }}</p>
+              </ion-col>
+            </ion-row>
             <p>Dirección: {{ visita.cliente.direccion }}, ({{ visita.cliente.comuna }}, {{ visita.cliente.region }})</p>
           </ion-text>
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block"  (click)="realizarVenta(visita , visita.cliente)">Venta</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="block" (click)="reprogramarVisita(visita.id)">Reprogramar</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="block" color="danger" (click)="cancelarVisita(visita.id)" >Cancelar</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="block" (click)="finalizarVisita(visita.id)" >Finalizar</ion-button>
+            </ion-col>
+          </ion-row>
         </div>
       </ion-accordion>
     </ion-accordion-group>

@@ -1,66 +1,125 @@
+/* Estilos generales */
 .barra-herramientas {
-    text-align: center;
-    color: #ffffff;
-    font-weight: bold;
-    font-family: 'Lora', serif;
-    --background: #0c2a5d;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: 'Lora', serif;
+  --background: #0c2a5d;
+}
+
+.titulo {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2rem;
+  color: black;
+  font-weight: bold;
+  font-family: 'Lora', serif;
+}
+
+/* Estilos para el título del cliente */
+.titulo-cliente {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #141607;
+  margin-top: 1rem;
+}
+
+
+/* Estilos para los títulos de la lista y encabezado */
+.encabezado-lista {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #0c2a5d;
+  text-align: center;
+}
+
+/* Estilos para la carga de datos */
+.seccion-datos-producto {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.seccion-datos-producto {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #333;
+}
+/* Añade un borde inferior decorativo */
+.seccion-datos-producto::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 14px;
+}
+
+.producto-seleccionado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+  background: #f8f8f8;
+  margin-bottom: 10px;
+}
+
+.producto-nombre {
+  flex-grow: 1;
+  margin-right: 10px;
+  color: #000
+}
+
+.producto-cantidad {
+  display: flex;
+  align-items: center;
+}
+
+.cantidad-input {
+  max-width: 60px;
+  text-align: center;
+}
+
+ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  margin: 0 5px;
+}
+
+ion-icon {
+  font-size: 20px;
+}
+
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .barra-herramientas {
+    font-size: 0.8rem;
   }
-  
+
   .titulo {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 2rem;
-    color: black;
-    font-weight: bold;
-    font-family: 'Lora', serif;
+    font-size: 1.2rem;
   }
-  
-  .formulario {
-    max-width: 90%;
-    margin: auto;
-    margin-top: 30px;
-    border-radius: 10px;
-    padding: 30px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 10px rgba(69, 127, 226, 0.5);
+
+  .container {
+    display: flex;
+    justify-content: flex-end;
   }
-  
-  ion-list ion-item {
-    --padding-start: 0;
-    --padding-end: 0;
-    margin-bottom: 20px; /* Incrementé el espacio entre items */
+
+  .botones-cantidad ion-button {
+    margin-left: 0; /* Elimina el margen en dispositivos móviles o ajusta según sea necesario */
+    margin-top: 10px; /* Ajusta según sea necesario */
   }
-  
-  ion-list ion-item ion-label {
-    --padding-start: 0; /* Eliminé el margen izquierdo de las etiquetas */
-  }
-  
-  .boton-send {
-    --background: #127c07;
-  }
-  
-  .boton_volver {
-    margin-top: 1rem;
-    border-radius: 20px;
-    --background: linear-gradient(to bottom, #0c2a5d, #00f9ff);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: white;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .barra-herramientas {
-      font-size: 0.8rem;
-    }
-  
-    .titulo {
-      font-size: 1.2rem;
-    }
-  
-    .formulario {
-      max-width: 90%;
-      margin: 0 auto;
-      margin-top: 20px; /* Ajusté el margen superior para dispositivos móviles */
-      padding: 20px; /* Ajusté el padding para dispositivos móviles */
-    }
-  }
-  
+
+
+
+}

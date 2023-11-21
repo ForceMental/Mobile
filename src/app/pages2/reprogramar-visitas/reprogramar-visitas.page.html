@@ -6,7 +6,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="body">
-
+  <p class="titulo">Selecciona tu fecha a Reprogramar</p>
+  <ion-list>
+    <ion-item id="open-modal">
+      <ion-label>Modal - Date selection</ion-label>
+      <ion-note slot="end">{{ dateExample | date }}</ion-note>
+    </ion-item>
+    <ion-modal trigger="open-modal" [cssClass]="'center'">
+      <ng-template>
+        <ion-datetime
+          presentation="date"
+          [(ngModel)]="dateExample"
+          size="cover"
+          class="custom-datetime"
+          (ionChange)="dismissModal()"
+        ></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-list>
   <ion-fab class="boton" vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button [routerLink]="['/home']" class="boton">
      <ion-icon name="arrow-back-outline"></ion-icon>
