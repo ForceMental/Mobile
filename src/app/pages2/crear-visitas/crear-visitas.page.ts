@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { VisitaService } from 'src/app/services/visita.service';
-import { DescripcionProductosPage } from '../descripcion-productos/descripcion-productos.page';
 
 @Component({
   selector: 'app-crear-visitas',
@@ -53,26 +52,12 @@ export class CrearVisitasPage {
       next: (response) => {
         // Maneja la respuesta del servidor aquí
         console.log('Solicitud POST exitosa', response);
-        this.presentarModal('Exito al crear cliente', true)
       },
       error: (error) => {
         // Maneja los errores de la solicitud aquí
         console.error('Error en la solicitud POST', error);
-        this.presentarModal('Error al crear cliente', false)
       }
     });
-  }
-
-  async presentarModal(mensaje: string, esExito: boolean) {
-    const modal = await this.modalController.create({
-      component: DescripcionProductosPage,
-      cssClass: 'popup-modal-style',
-      componentProps: {
-        'titulo': esExito ? 'Éxito' : 'Error',
-        'mensaje': mensaje
-      }
-    });
-    return await modal.present();
   }
 }
 

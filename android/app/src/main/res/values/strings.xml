@@ -3,5 +3,5 @@
     <string name="app_name">ForceMental</string>
     <string name="title_activity_main">ForceMental</string>
     <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">https://force-a5ba7.web.app/home</string>
+    <string name="custom_url_scheme">http://localhost:8100/home</string>
 </resources>

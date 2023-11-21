@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-descripcion-productos',
@@ -8,17 +7,9 @@ import { ModalController } from '@ionic/angular';
 })
 export class DescripcionProductosPage implements OnInit {
 
-  @Input() titulo: string = '';
-  @Input() mensaje: string = '';
+  constructor() { }
 
-  constructor(private modalCtrl: ModalController) { }
-
-  ngOnInit(): void {
-
-  }
-
-  cerrarModal() {
-    this.modalCtrl.dismiss();
+  ngOnInit() {
   }
 
 }

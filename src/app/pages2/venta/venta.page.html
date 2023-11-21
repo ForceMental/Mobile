@@ -5,79 +5,96 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="body">
+  <h1 class="titulo">Formulario Venta</h1>
 
-  <div class="titulo-cliente">
-    <p>Datos del Cliente</p>
+  <div class="formulario">
+    <form (ngSubmit)="submitForm()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">N° Venta</ion-label>
+          <ion-input [(ngModel)]="formData.venta" name="venta"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Fecha:</ion-label>
+          <ion-input [(ngModel)]="formData.fecha" name="fecha"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Rut:</ion-label>
+          <ion-input [(ngModel)]="formData.rut" name="rut"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Nombres:</ion-label>
+          <ion-input [(ngModel)]="formData.nombre" name="nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Apellidos:</ion-label>
+          <ion-input
+            [(ngModel)]="formData.apellido"
+            name="apellido"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Teléfono:</ion-label>
+          <ion-input
+            [(ngModel)]="formData.telefono"
+            name="telefono"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Correo:</ion-label>
+          <ion-input
+            [(ngModel)]="formData.correo_electronico"
+            name="correo_electronico"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Dirección:</ion-label>
+          <ion-input
+            [(ngModel)]="formData.direccion"
+            name="direccion"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-select
+            [(ngModel)]="formData.comuna"
+            name="comuna"
+            interface="popover"
+            label="Comuna:"
+          >
+            <ion-select-option value="1">Viña del Mar</ion-select-option>
+            <ion-select-option value="2">Santiago</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Nombre de Producto:</ion-label>
+          <ion-input
+            [(ngModel)]="formData.nombre_producto"
+            name="nombre_producto"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Stock:</ion-label>
+          <ion-input [(ngModel)]="formData.stock" name="stock"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-button expand="full" type="submit" (click)="presentAlertConfirm()">Enviar</ion-button>
+
+    </form>
   </div>
-
-  <!-- Rectángulo con datos -->
-  <div class="rectangulo">
-    <p>Nombre: {{ cliente.nombre }}</p>
-    <p>RUT: {{ cliente.rut }}</p>
-    <p>Dirección: {{ cliente.direccion }}</p>
-  </div>
-
-  <!-- Sección sumar productos -->
-  <div class="seccion-productos-seleccionados">
-    <ion-card>
-      <ion-card-content>
-        <ion-grid>
-          <ion-row>
-            <!-- Bucle para iterar sobre cada producto seleccionado -->
-            <ion-col size="12" size-md="6" *ngFor="let producto of productoSeleccionado">
-              <div class="producto-seleccionado">
-                <ion-label class="producto-nombre">{{ producto.nombre_producto }}</ion-label>
-                <div class="producto-cantidad">
-                  <ion-button fill="clear" size="small" (click)="disminuirCantidad(producto)">
-                    <ion-icon name="remove-outline"></ion-icon>
-                  </ion-button>
-                  <ion-input class="cantidad-input" type="number" [(ngModel)]="producto.cantidad"></ion-input>
-                  <ion-button fill="clear" size="small" (click)="aumentarCantidad(producto)">
-                    <ion-icon name="add-outline"></ion-icon>
-                  </ion-button>
-                </div>
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-card-content>
-    </ion-card>
-  </div>
-
-  <!-- Seccion carga de datos -->
-  <div class="seccion-datos-producto">
-    <ion-card>
-      <ion-card-content>
-        <ion-grid class="tabla-container">
-          <!-- Encabezados de columna -->
-          <ion-row class="tabla-header">
-            <ion-col size="6">
-              <ion-label class="encabezado-lista">Nombre de Producto</ion-label>
-            </ion-col>
-            <ion-col size="6">
-              <ion-label class="encabezado-lista">Acciones</ion-label>
-            </ion-col>
-          </ion-row>
-
-          <!-- Datos de los productos -->
-          <ion-row *ngFor="let producto of products" class="tabla-row">
-            <ion-col size="6">
-              <ion-label class="columna-label-dark">{{ producto.nombre_producto }}</ion-label>
-            </ion-col>
-            <ion-col size="6">
-              <ion-button class="boton-agregar-producto" (click)="realizarAccion(producto)">Agregar</ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-card-content>
-    </ion-card>
-  </div>
-
-  <!-- Botón "Enviar Venta" con confirmación -->
-  <ion-button expand="full" (click)="presentAlertConfirm()">Enviar Venta</ion-button>
 
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button class="boton-volver" [routerLink]="['/home']">
+    <ion-fab-button class="boton_volver" [routerLink]="['/home']">
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

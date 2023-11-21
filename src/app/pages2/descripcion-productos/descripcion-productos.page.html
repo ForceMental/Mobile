@@ -1,9 +1,13 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>{{ titulo }}</ion-title>
+    <ion-title>descripcion_productos</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  <p>{{ mensaje }}</p>
-  <ion-button expand="full" [routerLink]="['/home']"  (click)="cerrarModal()">Aceptar</ion-button>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">descripcion_productos</ion-title>
+    </ion-toolbar>
+  </ion-header>
 </ion-content>
