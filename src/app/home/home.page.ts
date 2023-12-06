@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
-
+import { Router, NavigationEnd} from '@angular/router';
+import { MediaMatcher } from '@angular/cdk/layout';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,10 +9,29 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   userInfo: any;
-  constructor(private alertController: AlertController, private router: Router) {
+  mobileQuery: MediaQueryList;
+  isHomePage: boolean;
+  constructor(private alertController: AlertController, private router: Router, private media: MediaMatcher,) {
     const userInfoString = localStorage.getItem('userInfo');
     if (userInfoString) {
       this.userInfo = JSON.parse(userInfoString);
+    }
+    this.mobileQuery = media.matchMedia('(prefers-color-scheme: dark)');
+    this.isHomePage = this.router.url === '/home';
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isHomePage = event.url === '/home';
+      }
+    });
+  }
+
+  private toggleDarkTheme(shouldAdd: boolean) {
+    const body = document.body;
+    if (shouldAdd) {
+      body.classList.add('dark-theme');
+    } else {
+      body.classList.remove('dark-theme');
     }
   }
 

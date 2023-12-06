@@ -56,6 +56,13 @@ export class AuthService {
         windowOptions: "height=600,left=0,top=0",
         pkceEnabled: true,
         pkceCodeChallenge: codeChallenge,
+      },
+      android: {
+        // Configuración específica para Android
+        packageName: "io.ionic.starter", // Reemplaza con el nombre de tu paquete Android
+        responseType: "code", // Puede que necesites mantener el mismo responseType
+        redirectUrl: 'io.ionic.starter:/home' // Reemplaza con tu URL de redirección para Android
+        // ... otras configuraciones específicas de Android que necesites
       }
     };
 
