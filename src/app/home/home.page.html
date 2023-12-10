@@ -1,48 +1,3 @@
-<ion-menu menuId="main-menu" content-id="main" >
-  <ion-header>
-    <ion-toolbar class="barra-herramientas">
-      <ion-title>Gestión de Ejecutivo</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content [fullscreen]="true" class="body">
-    <div class="item-visitas-agendadas">
-      <ion-item routerLink="/visitas-agendadas" class="item-visitas-agendadas">
-        <ion-icon name="calendar-outline" slot="start"></ion-icon>
-        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
-        <ion-label>Crear visitas</ion-label>
-      </ion-item>
-
-    </div>
-
- <div>
-    <ion-item routerLink="/crear-clientes" class="item-visitas-agendadas">
-      <ion-icon name="people-outline" slot="start"></ion-icon>
-      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
-      <ion-label>Crear Cliente</ion-label>
-    </ion-item>
-
-   </div>
-
-   <div>
-    <ion-item routerLink="/solicitar-productos" class="item-visitas-agendadas">
-      <ion-icon name="cube-outline" slot="start"></ion-icon>
-      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
-      <ion-label>Solicitar Productos</ion-label>
-    </ion-item>
-
-   </div>
-
-   <div>
-    <ion-item routerLink="/venta" class="item-visitas-agendadas">
-      <ion-icon name="document-outline" slot="start"></ion-icon>
-      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
-      <ion-label>Crear Venta</ion-label>
-    </ion-item>
-
-   </div>
-
-  </ion-content>
-</ion-menu>
 <ion-header>
   <ion-toolbar class="barra-herramientas">
     <ion-title>Bienvenido Ejecutivo</ion-title>
@@ -51,19 +6,18 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true" class="body">
 
-  <ion-img src="assets/icon/avatar2.png" alt="imagen ejecutivo"></ion-img>
+  <ion-img src="assets/icon/ejecutivo-3.png" alt="imagen ejecutivo"></ion-img>
 
-    <ion-list>
-      <ion-item>
-        <ion-label>{{userInfo.first_name}}</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>{{userInfo.email}}</ion-label>
-      </ion-item>
-    </ion-list>
+  <ion-list *ngIf="userInfo">
+    <ion-item>
+      <ion-label>{{ userInfo.first_name }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ userInfo.email }}</ion-label>
+    </ion-item>
+  </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button class="boton" (click)="presentAlert()">

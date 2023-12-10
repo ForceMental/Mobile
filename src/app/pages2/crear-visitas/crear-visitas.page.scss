@@ -35,13 +35,29 @@ ion-list ion-item ion-label {
   --padding-start: 0; /* Eliminé el margen izquierdo de las etiquetas */
 }
 
-.boton-send {
-  --background: #127c07; /* Color verde por defecto */
+.boton_seleccionar_fecha {
+  --background: #127c07;
+  --color: #ffffff;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra horizontalmente */
+  margin: 0 auto; /* Centra el botón en el contenedor */
+  font-size: 1.5rem;
 }
 
-.boton-send-frio {
-  --background: #3498db; /* Color azul para visita en frío */
+/* Pseudo-clase :hover para cambiar el color de fondo al pasar el mouse */
+.boton_seleccionar_fecha:hover {
+  --background: #0a5a04; /* Cambia el color de fondo al pasar el mouse */
 }
+
+.boton-send {
+  --background:  #127c07; /* Cambié el color de fondo a verde más vibrante */
+  font-weight: bold;
+  color: white; /* Añadí color blanco al texto del botón */
+  padding: 10px 15px;
+}
+
 
 
 
@@ -68,5 +84,11 @@ ion-list ion-item ion-label {
     margin-top: 20px; /* Ajusté el margen superior para dispositivos móviles */
     padding: 20px; /* Ajusté el padding para dispositivos móviles */
   }
+
+  .boton_seleccionar_fecha{
+    font-size: 1rem;
+    font-size: 0.7rem;
+  }
+
+
 }
-  

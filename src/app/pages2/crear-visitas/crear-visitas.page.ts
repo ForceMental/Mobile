@@ -53,12 +53,12 @@ export class CrearVisitasPage {
       next: (response) => {
         // Maneja la respuesta del servidor aquí
         console.log('Solicitud POST exitosa', response);
-        this.presentarModal('Exito al crear cliente', true)
+        this.presentarModal('Exito al crear Visita', true)
       },
       error: (error) => {
         // Maneja los errores de la solicitud aquí
         console.error('Error en la solicitud POST', error);
-        this.presentarModal('Error al crear cliente', false)
+        this.presentarModal('Error al crear Visita', false)
       }
     });
   }

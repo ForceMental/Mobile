@@ -1,4 +1,43 @@
-<ion-app>
-  <ion-router-outlet id="main"></ion-router-outlet>
+<ion-menu menuId="main-menu" content-id="main-content">
+  <ion-header>
+    <ion-toolbar class="barra-herramientas">
+      <ion-title>Gestión de Ejecutivo</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true" class="body">
+    <div class="item-visitas-agendadas">
+      <ion-item routerLink="/visitas-agendadas" class="item-visitas-agendadas" (click)="closeMenu()">
+        <ion-icon name="calendar-outline" slot="start"></ion-icon>
+        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+        <ion-label>Crear visitas</ion-label>
+      </ion-item>
+    </div>
 
-</ion-app>
+    <div>
+      <ion-item routerLink="/crear-clientes" class="item-visitas-agendadas" (click)="closeMenu()">
+        <ion-icon name="people-outline" slot="start"></ion-icon>
+        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+        <ion-label>Crear Cliente</ion-label>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-item routerLink="/solicitar-productos" class="item-visitas-agendadas" (click)="closeMenu()">
+        <ion-icon name="cube-outline" slot="start"></ion-icon>
+        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+        <ion-label>Solicitar Productos</ion-label>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-item routerLink="/venta" class="item-visitas-agendadas" (click)="closeMenu()">
+        <ion-icon name="document-outline" slot="start"></ion-icon>
+        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+        <ion-label>Crear Venta</ion-label>
+      </ion-item>
+    </div>
+  </ion-content>
+
+</ion-menu>
+
+<ion-router-outlet id="main-content"></ion-router-outlet>

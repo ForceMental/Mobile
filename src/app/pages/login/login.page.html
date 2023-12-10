@@ -1,33 +1,10 @@
-<ion-header>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap" rel="stylesheet">
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <h1 class="titulo">Bienvenido a Force Mental</h1>
-
-  <div>
-    <form class="formulario">
-      <ion-item class="margen">
-        <ion-input class="input" placeholder="Nombre de usuario"></ion-input>
-        <ion-icon name="person-outline"></ion-icon>
-      </ion-item>
-      <ion-item class="margen">
-        <ion-input class="input" placeholder="Contraseña"></ion-input>
-        <ion-icon name="lock-closed-outline"></ion-icon>
-      </ion-item>
-      <div class="restablecer_contraseña">
-        <a [routerLink]="['/reset-password']">Restablecer contraseña</a>
-      </div>
-    </form>
-  </div>
-  <ion-button class="boton" expand="block"  routerLink="/home">INGRESAR</ion-button>
-
 
   <div class="imagen-container">
     <img src="assets/icon/imagen-force-mental.png" alt="Descripción de la imagen" class="imagen" />
   </div>
-
-
+<div>
+  <ion-button class="boton" expand="block" routerLink="/home">INGRESAR</ion-button>
+</div>
 </ion-content>

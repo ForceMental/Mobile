@@ -10,10 +10,7 @@ const routes: Routes = [ //rutas para las pages
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
-  {
-    path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
-  },
+
   {
     path: '',
     redirectTo: 'landing',
@@ -23,11 +20,7 @@ const routes: Routes = [ //rutas para las pages
     path: 'landing',
     loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
   },
-  {
-    path: 'reset-password',
-    loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
-  },
-  
+
   {
     path: 'crear-visitas',
     loadChildren: () => import('./pages2/crear-visitas/crear-visitas.module').then( m => m.CrearVisitasPageModule)
@@ -36,7 +29,7 @@ const routes: Routes = [ //rutas para las pages
     path: 'visitas-agendadas',
     loadChildren: () => import('./pages2/visitas-agendadas/visitas-agendadas.module').then( m => m.VisitasAgendadasPageModule)
   },
-  
+
   {
     path: 'reprogramar-visitas',
     loadChildren: () => import('./pages2/reprogramar-visitas/reprogramar-visitas.module').then( m => m.ReprogramarVisitasPageModule)
@@ -66,7 +59,7 @@ const routes: Routes = [ //rutas para las pages
     loadChildren: () => import('./pages2/descripcion-productos/descripcion-productos.module').then( m => m.DescripcionProductosPageModule)
   },
 
-   
+
 ];
 
 @NgModule({

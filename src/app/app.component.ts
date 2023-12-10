@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router, NavigationEnd } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+
 
 
 @Component({
@@ -46,7 +48,7 @@ export class AppComponent {
   mobileQuery: MediaQueryList;
   isHomePage: boolean;
 
-  constructor(private media: MediaMatcher, private router: Router) {
+  constructor(private media: MediaMatcher, private router: Router, private menuController: MenuController) {
     this.mobileQuery = media.matchMedia('(prefers-color-scheme: dark)');
     this.isHomePage = this.router.url === '/home';
 
@@ -64,5 +66,9 @@ export class AppComponent {
     } else {
       body.classList.remove('dark-theme');
     }
+  }
+
+  closeMenu() {
+    this.menuController.close();
   }
 }

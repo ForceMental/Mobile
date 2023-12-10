@@ -11,6 +11,8 @@ export class HomePage {
   userInfo: any;
   mobileQuery: MediaQueryList;
   isHomePage: boolean;
+
+
   constructor(private alertController: AlertController, private router: Router, private media: MediaMatcher,) {
     const userInfoString = localStorage.getItem('userInfo');
     if (userInfoString) {
@@ -50,8 +52,8 @@ export class HomePage {
         {
           text: 'Salir',
           handler: () => {
-            // Navegar a otra página al salir
-            this.router.navigate(['/landing']);
+
+            this.router.navigate(['/login']);
           },
         },
       ],
@@ -59,6 +61,8 @@ export class HomePage {
 
     await alert.present();
   }
+
+
 }
 
 

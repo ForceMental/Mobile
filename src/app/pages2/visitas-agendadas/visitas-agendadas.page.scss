@@ -1,3 +1,7 @@
+.body{
+  --background: linear-gradient(to bottom, #0c2a5d, #00f9ff);
+}
+
 .barra-herramientas {
   text-align: center;
   color: #ffffff;
@@ -7,12 +11,14 @@
 }
 
 .titulo {
-  font-size: 2rem;
-  color: black;
-  font-weight: bold;
-  font-family: 'Lora', serif;
   text-align: center;
   margin-top: 3rem;
+  font-size: 3rem;
+  margin-bottom: 5rem;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: 'Lora', serif;
+
 }
 
 .boton_registrar-cliente {
@@ -22,9 +28,12 @@
   margin: 0 1%; /* Añadir un pequeño margen entre los botones */
 }
 
+.prueba{
+  border-radius: 20px;
 
-.boton_registrar-cliente {
-  --background: #0f077c;
+}
+.boton_visita {
+  --background: #127c07;
 
 }
 
@@ -49,6 +58,13 @@ margin: 0px , 32px; /* Margen derecho */
 
   .barra-herramientas {
     font-size: 0.8rem;
+  }
+
+  .titulo{
+    margin-top: 2.5rem;
+    font-size: 1.7rem;
+    margin-bottom: 2.5rem;
+
   }
 
 

@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 .barra-herramientas {
   text-align: center;
   color: #ffffff;
@@ -99,6 +99,28 @@ ion-icon {
   font-size: 20px;
 }
 
+.rectangulo {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.rectangulo p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+.boton_venta{
+  --background: #127c07;
+}
+.boton_volver {
+  --background: linear-gradient(to bottom, #0c2a5d, #00f9ff);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: 10px;
+}
 
 /* Estilos para dispositivos móviles */
 @media screen and (max-width: 768px) {
