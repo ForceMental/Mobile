@@ -26,6 +26,7 @@ export class VisitaService {
      this.idEmpleado = 100;
     console.log(this.idEmpleado);
     return from(this.authService.getAuthToken()).pipe(
+<<<<<<< HEAD
        mergeMap((token) => {
          const headers = new HttpHeaders({
            Authorization: `Bearer ${this.caso}`,
@@ -39,6 +40,21 @@ export class VisitaService {
        })
      );
    }
+=======
+      mergeMap((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+        console.log(token);
+        const params = new HttpParams()
+          .set('id_empleado', this.idEmpleado)
+          .set('fecha', date);
+
+        return this.http.get(`http://107.22.174.168:8010/api/visitasIdFecha/`, { headers, params });
+      })
+    );
+  }
+>>>>>>> b0dc4fecc2a72c1e5801c2d3c83a3841c7ff36af
 
   crearVisita(formularioCompleto: any): Observable<any> {
     return from(this.authService.getAuthToken()).pipe(
@@ -50,27 +66,52 @@ export class VisitaService {
         });
 
         // URL para la solicitud POST
-        const url = `https://forcemental.azure-api.net/visita/api/visitas/`;
+        const url = `http://107.22.174.168:8010/api/visitas-crear/`;
 
         // Realizar la solicitud HTTP con los encabezados
         return this.http.post(url, formularioCompleto, { headers });
       })
     );
   }
-
   reprogramarVisita(visitaId: number, nuevaFecha: string) {
-    const url = `https://forcemental.azure-api.net/visita/api/reprogramar/${visitaId}/`;
-    return this.http.patch(url, { fecha_visita: nuevaFecha });
+    return from(this.authService.getAuthToken()).pipe(
+      switchMap(token => {
+        const url = `http://107.22.174.168:8010/api/reprogramar-visita/${visitaId}/`;
+
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        });
+
+        return this.http.patch(url, { fecha_visita: nuevaFecha }, { headers });
+      })
+    );
   }
 
-  finalizarVisita(visitaId: number) {
-    const url = `https://forcemental.azure-api.net/visita/api/visita/${visitaId}/finalizar/`;
-    return this.http.post(url, {});
+  finalizarVisita(visitaId: number): Observable<any> {
+    return from(this.authService.getAuthToken()).pipe(
+      switchMap(token => {
+        const url = `http://107.22.174.168:8010/api/finalizar/${visitaId}/`;
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        });
+        return this.http.post(url, {}, { headers });
+      })
+    );
   }
 
-  cancelarVisita(visitaId: number) {
-    const url = `https://forcemental.azure-api.net/visita/api/visita/${visitaId}/cancelar/`;
-    return this.http.post(url, {});
+  cancelarVisita(visitaId: number): Observable<any> {
+    return from(this.authService.getAuthToken()).pipe(
+      switchMap(token => {
+        const url = `http://107.22.174.168:8010/api/cancelar/${visitaId}/`;
+        const headers = new HttpHeaders({
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        });
+        return this.http.post(url, {}, { headers });
+      })
+    );
   }
 }
 
