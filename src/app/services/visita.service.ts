@@ -26,21 +26,6 @@ export class VisitaService {
      this.idEmpleado = 100;
     console.log(this.idEmpleado);
     return from(this.authService.getAuthToken()).pipe(
-<<<<<<< HEAD
-       mergeMap((token) => {
-         const headers = new HttpHeaders({
-           Authorization: `Bearer ${this.caso}`,
-         });
-
-         const params = new HttpParams()
-           .set('id_empleado', this.idEmpleado)
-           .set('fecha', date);
-
-         return this.http.get(`http://107.22.174.168:8000/api/visitasIdFecha/`, { headers, params });
-       })
-     );
-   }
-=======
       mergeMap((token) => {
         const headers = new HttpHeaders({
           Authorization: `Bearer ${token}`,
@@ -54,7 +39,6 @@ export class VisitaService {
       })
     );
   }
->>>>>>> b0dc4fecc2a72c1e5801c2d3c83a3841c7ff36af
 
   crearVisita(formularioCompleto: any): Observable<any> {
     return from(this.authService.getAuthToken()).pipe(
