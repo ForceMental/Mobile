@@ -66,20 +66,22 @@ export class VisitasAgendadasPage {
   }
 
   cancelarVisita(visitaId: number) {
-    // Llamada al servicio para cancelar la visita
+    console.log('Iniciando cancelarVisita');
     this.visitasService.cancelarVisita(visitaId).subscribe(
       response => {
-        this.presentarModal('Visita cancelada con éxito' , true)
-        // Manejar respuesta exitosa aquí
+        console.log('Respuesta exitosa de cancelarVisita', response);
+        this.presentarModal('Visita cancelada con éxito', true);
       },
       error => {
+        console.error('Error en cancelarVisita', error);
         if (error.status === 400) {
-          // Aquí es donde puedes acceder al mensaje de error
-          this.presentarModal(error.error.message, false)
+          this.presentarModal(error.error.message, false);
         }
       }
     );
   }
+
+
 
   async presentarModal(mensaje: string, esExito: boolean) {
     const modal = await this.modalController.create({

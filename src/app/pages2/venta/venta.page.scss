@@ -113,8 +113,15 @@ ion-icon {
   margin: 5px 0;
   font-size: 1rem;
 }
-.boton_venta{
+
+.boton-agregar-producto{
   --background: #127c07;
+  padding: 15px; /* Ajusta el espacio interno del botón */
+
+}
+.boton_venta {
+  --background: #127c07;
+
 }
 .boton_volver {
   --background: linear-gradient(to bottom, #0c2a5d, #00f9ff);

@@ -1,9 +1,17 @@
+.body {
+  --background: linear-gradient(to bottom, #0c2a5d, #00f9ff);
+}
+
 .barra-herramientas {
   text-align: center;
   color: #ffffff;
   font-weight: bold;
   font-family: 'Lora', serif;
   --background: #0c2a5d;
+}
+
+.formulario fondo-formulario{
+  margin-top: 5rem;
 }
 
 .titulo {
@@ -81,13 +89,22 @@ ion-list ion-item ion-label {
   .formulario {
     max-width: 90%;
     margin: 0 auto;
-    margin-top: 20px; /* Ajusté el margen superior para dispositivos móviles */
+    margin-top: 3rem; /* Ajusté el margen superior para dispositivos móviles */
     padding: 20px; /* Ajusté el padding para dispositivos móviles */
   }
 
   .boton_seleccionar_fecha{
     font-size: 1rem;
     font-size: 0.7rem;
+  }
+
+  .boton-send {
+    --background:  #127c07; /* Cambié el color de fondo a verde más vibrante */
+    font-weight: bold;
+    color: white; /* Añadí color blanco al texto del botón */
+    padding: 10px 15px;
+    margin-top: 1.5rem;
+
   }
 
 

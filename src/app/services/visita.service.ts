@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, from, mergeMap, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { AuthService } from './auth.service';
+import { catchError } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -98,6 +100,7 @@ export class VisitaService {
     );
   }
 }
+
 
 
 
