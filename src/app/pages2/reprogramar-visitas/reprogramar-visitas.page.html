@@ -7,9 +7,9 @@
 
 <ion-content [fullscreen]="true" class="body">
   <p class="titulo">Selecciona tu fecha a Reprogramar</p>
-  <ion-list>
+  <ion-list class="borde">
     <ion-item id="open-modal">
-      <ion-label>Modal - Date selection</ion-label>
+      <ion-button class="boton-reprogramar">Presione Aquí</ion-button>
       <ion-note slot="end">{{ dateExample | date }}</ion-note>
     </ion-item>
     <ion-modal trigger="open-modal" [cssClass]="'center'">
@@ -25,7 +25,7 @@
     </ion-modal>
   </ion-list>
   <ion-fab class="boton" vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button [routerLink]="['/home']" class="boton">
+    <ion-fab-button [routerLink]="['/visitas-agendadas']" class="boton">
      <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

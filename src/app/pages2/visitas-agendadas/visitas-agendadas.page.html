@@ -7,62 +7,64 @@
 <ion-content [fullscreen]="true" class="body">
 
 
-  <p class="titulo">Selecciona tu fecha de visita</p>
-  <ion-list class="prueba">
-    <ion-item class="prueba" id="open-modal">
-      <ion-button class="boton_visita">Presione Aquí</ion-button>
-      <ion-note slot="end">{{ dateExample | date }}</ion-note>
-    </ion-item>
-    <ion-modal trigger="open-modal" [cssClass]="'center'">
-      <ng-template>
-        <ion-datetime
-          presentation="date"
-          [(ngModel)]="dateExample"
-          size="cover"
-          class="custom-datetime"
-          (ionChange)="dismissModal()"
-        ></ion-datetime>
-      </ng-template>
-    </ion-modal>
-  </ion-list>
+   <!-- Contenido del primer ion-content -->
+   <p class="titulo_1">Selecciona tu fecha de visita</p>
+   <ion-list class="borde">
+     <ion-item id="open-modal">
+       <ion-button class="boton_visita">Presione Aquí</ion-button>
+       <ion-note slot="end">{{ dateExample | date }}</ion-note>
+     </ion-item>
+     <ion-modal trigger="open-modal" [cssClass]="'center'">
+       <ng-template>
+         <ion-datetime
+           presentation="date"
+           [(ngModel)]="dateExample"
+           size="cover"
+           class="custom-datetime"
+           (ionChange)="dismissModal()"
+         ></ion-datetime>
+       </ng-template>
+     </ion-modal>
+   </ion-list>
 
-  <ion-content class="lista" *ngIf="visitas && visitas.length > 0">
-    <p class="titulo">Visitas</p>
-    <ion-accordion-group id="custom-margin">
-      <ion-accordion *ngFor="let visita of visitas; let i = index" [value]="i">
-        <ion-item slot="header" color="primary" (click)="toggleAcordeon(i)">
-          <ion-label class="header-label">{{ visita.fecha_visita }} / {{ visita.cliente.nombre }}</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content" [hidden]="acordeonAbierto !== i">
-          <ion-text color="dark">
-            <ion-row>
-              <ion-col>
-                <p>Tipo de Visita: {{ visita.tipo_visita }}</p>
-              </ion-col>
-              <ion-col>
-                <p>Cliente: {{ visita.cliente.nombre }} {{ visita.cliente.apellido }}</p>
-              </ion-col>
-            </ion-row>
-            <p>Dirección: {{ visita.cliente.direccion }}, ({{ visita.cliente.comuna }}, {{ visita.cliente.region }})</p>
-          </ion-text>
-          <ion-row>
-            <ion-col>
-              <ion-button expand="block"  (click)="realizarVenta(visita , visita.cliente)">Venta</ion-button>
-            </ion-col>
-            <ion-col>
-              <ion-button expand="block" (click)="reprogramarVisita(visita.id)">Reprogramar</ion-button>
-            </ion-col>
-            <ion-col>
-              <ion-button expand="block" color="danger" (click)="cancelarVisita(visita.id)" >Cancelar</ion-button>
-            </ion-col>
-            <ion-col>
-              <ion-button expand="block" (click)="finalizarVisita(visita.id)" >Finalizar</ion-button>
-            </ion-col>
-          </ion-row>
-        </div>
-      </ion-accordion>
-    </ion-accordion-group>
-  </ion-content>
+    <!-- Contenido del segundo ion-content -->
+   <ion-list class="lista_2" *ngIf="visitas && visitas.length > 0">
+     <p class="titulo_2">Visitas</p>
+     <ion-accordion-group id="custom-margin">
+       <ion-accordion *ngFor="let visita of visitas; let i = index" [value]="i">
+         <ion-item slot="header" color="primary" (click)="toggleAcordeon(i)">
+           <ion-label class="header-label">{{ visita.fecha_visita }} / {{ visita.cliente.nombre }}</ion-label>
+         </ion-item>
+         <div class="ion-padding" slot="content" [hidden]="acordeonAbierto !== i">
+           <ion-text color="dark">
+             <ion-row>
+               <ion-col>
+                 <p>Tipo de Visita: {{ visita.tipo_visita }}</p>
+               </ion-col>
+               <ion-col>
+                 <p>Cliente: {{ visita.cliente.nombre }} {{ visita.cliente.apellido }}</p>
+               </ion-col>
+             </ion-row>
+             <p>Dirección: {{ visita.cliente.direccion }}, ({{ visita.cliente.comuna }}, {{ visita.cliente.region }})</p>
+           </ion-text>
+           <ion-row class="botones_visitas">
+             <ion-col>
+               <ion-button expand="block" class="boton_venta" (click)="realizarVenta(visita, visita.cliente)">Venta</ion-button>
+             </ion-col>
+             <ion-col>
+               <ion-button expand="block" (click)="reprogramarVisita(visita.id)">Reprogramar</ion-button>
+             </ion-col>
+             <ion-col>
+               <ion-button expand="block" color="danger" (click)="cancelarVisita(visita.id)">Cancelar</ion-button>
+             </ion-col>
+             <ion-col>
+               <ion-button expand="block" (click)="finalizarVisita(visita.id)">Finalizar</ion-button>
+             </ion-col>
+           </ion-row>
+         </div>
+       </ion-accordion>
+     </ion-accordion-group>
+   </ion-list>
 <!--
     <div class="botones-container">
       <ion-button class="boton_registrar-cliente" [routerLink]="['/crear-visitas']" expand="block">Crear Visita</ion-button>
@@ -76,3 +78,7 @@
   </ion-fab>
 
 </ion-content>
+
+
+
+
