@@ -35,7 +35,7 @@ export class VisitaService {
           .set('id_empleado', this.idEmpleado)
           .set('fecha', date);
 
-        return this.http.get(`http://107.22.174.168:8010/api/visitasIdFecha/`, { headers, params });
+        return this.http.get(`https://gatewayforce.azure-api.net/api/visitasIdFecha/`, { headers, params });
       })
     );
   }
@@ -50,7 +50,7 @@ export class VisitaService {
         });
 
         // URL para la solicitud POST
-        const url = `http://107.22.174.168:8010/api/visitas-crear/`;
+        const url = `https://gatewayforce.azure-api.net/api/visitas-crear/`;
 
         // Realizar la solicitud HTTP con los encabezados
         return this.http.post(url, formularioCompleto, { headers });
@@ -60,7 +60,7 @@ export class VisitaService {
   reprogramarVisita(visitaId: number, nuevaFecha: string) {
     return from(this.authService.getAuthToken()).pipe(
       switchMap(token => {
-        const url = `http://107.22.174.168:8010/api/reprogramar-visita/${visitaId}/`;
+        const url = `https://gatewayforce.azure-api.net/api/reprogramar-visita/${visitaId}/`;
 
         const headers = new HttpHeaders({
           'Authorization': `Bearer ${token}`,
@@ -75,7 +75,7 @@ export class VisitaService {
   finalizarVisita(visitaId: number): Observable<any> {
     return from(this.authService.getAuthToken()).pipe(
       switchMap(token => {
-        const url = `http://107.22.174.168:8010/api/finalizar/${visitaId}/`;
+        const url = `https://gatewayforce.azure-api.net/api/finalizar/${visitaId}/`;
         const headers = new HttpHeaders({
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ export class VisitaService {
   cancelarVisita(visitaId: number): Observable<any> {
     return from(this.authService.getAuthToken()).pipe(
       switchMap(token => {
-        const url = `http://107.22.174.168:8010/api/cancelar/${visitaId}/`;
+        const url = `https://gatewayforce.azure-api.net/api/cancelar/${visitaId}/`;
         const headers = new HttpHeaders({
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

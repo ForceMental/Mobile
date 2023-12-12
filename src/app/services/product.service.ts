@@ -19,7 +19,7 @@ export class ProductService {
           Authorization: `Bearer ${token}`,
         });
 
-        return this.http.get(`http://107.22.174.168:8010/api/productos/`, { headers });
+        return this.http.get(`https://gatewayforce.azure-api.net//api/productos/`, { headers });
       })
     );
   }

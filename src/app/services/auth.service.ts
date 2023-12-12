@@ -90,7 +90,7 @@ export class AuthService {
 
       // Realiza la solicitud HTTP con el token de acceso en el encabezado
       try {
-        const userInfo = await firstValueFrom(this.http.get(`${environment.apiUrl}:8010/api/view_users/`, { headers }));
+        const userInfo = await firstValueFrom(this.http.get(`${environment.apiUrl}/api/view_users/`, { headers }));
         localStorage.setItem('userInfo', JSON.stringify(userInfo));
         console.log('Información del usuario:', userInfo);
       } catch (error) {

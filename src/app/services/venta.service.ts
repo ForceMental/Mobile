@@ -7,8 +7,8 @@ import { Observable, from, mergeMap } from 'rxjs';
   providedIn: 'root'
 })
 export class VentaService {
-  private apiUrl = 'http://107.22.174.168:8010/api/ventas/';
-  private authToken: string = '';
+  private apiUrl = 'https://gatewayforce.azure-api.net/api/ventas/';
+
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   realizarVenta(venta: any): Observable<any> {
@@ -18,7 +18,7 @@ export class VentaService {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
         });
-
+        console.log(venta);
         return this.http.post(`${this.apiUrl}`, venta, { headers });
       })
     );
